@@ -31,89 +31,54 @@
   }
   .container { max-width: 700px; margin: 0 auto; }
 
-  /* ── Header (ultra-compact) ── */
+  /* ── Header ── */
   .site-header { text-align: center; padding: 24px 0 0; }
-  .site-logo {
-    font-size: 30px; font-weight: 700; color: var(--accent);
-    letter-spacing: -0.6px; line-height: 1;
-  }
-  .site-title {
-    font-size: 14px; font-weight: 500; color: var(--text);
-    margin-top: 10px; letter-spacing: 0.2px;
-  }
-  .site-sub {
-    font-size: 12px; color: var(--muted); margin-top: 6px;
-    letter-spacing: 0.6px;
-  }
-  .site-stats {
-    font-size: 12px; color: var(--faint); margin-top: 8px;
-    letter-spacing: 0.2px;
-  }
+  .site-logo { font-size: 30px; font-weight: 700; color: var(--accent); letter-spacing: -0.6px; line-height: 1; }
+  .site-title { font-size: 14px; font-weight: 500; color: var(--text); margin-top: 10px; letter-spacing: 0.2px; }
+  .site-sub { font-size: 12px; color: var(--muted); margin-top: 6px; letter-spacing: 0.6px; }
+  .site-stats { font-size: 12px; color: var(--faint); margin-top: 8px; letter-spacing: 0.2px; }
   .site-stats .sep { color: #D1D5DB; margin: 0 5px; }
-  .header-divider {
-    width: 28px; height: 1.5px; background: var(--accent);
-    margin: 14px auto 0; border-radius: 1px; opacity: 0.6;
-  }
+  .header-divider { width: 28px; height: 1.5px; background: var(--accent); margin: 14px auto 0; border-radius: 1px; opacity: 0.6; }
 
   /* ── Category Nav ── */
-  .cat-nav {
-    display: flex; justify-content: center; gap: 6px;
-    margin: 12px 0 24px; flex-wrap: wrap;
-  }
-  .cat-pill {
-    font-size: 12px; font-weight: 500; padding: 4px 14px;
-    border-radius: 14px; border: 1px solid var(--pill-border);
-    cursor: pointer; transition: all 0.15s;
-    background: var(--pill-bg); color: var(--pill-text);
-    white-space: nowrap; user-select: none;
-  }
+  .cat-nav { display: flex; justify-content: center; gap: 6px; margin: 12px 0 0; flex-wrap: wrap; }
+  .cat-pill { font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 14px; border: 1px solid var(--pill-border); cursor: pointer; transition: all 0.15s; background: var(--pill-bg); color: var(--pill-text); white-space: nowrap; user-select: none; }
   .cat-pill:hover { background: #E5E7EB; border-color: #D1D5DB; }
-  .cat-pill.active {
-    background: var(--pill-active-bg); color: var(--pill-active-text);
-    border-color: var(--pill-active-bg);
+  .cat-pill.active { background: var(--pill-active-bg); color: var(--pill-active-text); border-color: var(--pill-active-bg); }
+
+  /* ── Hot Topics Section ── */
+  .topics-section { margin: 20px 0 28px; }
+  .topics-section .label { font-size: 12px; font-weight: 600; color: var(--faint); letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase; }
+  .topics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .topic-card {
+    background: var(--card); border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 12px; padding: 14px 12px; cursor: pointer;
+    transition: all 0.15s cubic-bezier(0.2,0,0,1);
+    text-align: center; user-select: none;
   }
+  .topic-card:hover { border-color: rgba(0,0,0,0.12); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .topic-card.active { border-color: var(--accent); background: #F0F4FA; }
+  .topic-card .topic-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .topic-card .topic-count { font-size: 11px; color: var(--faint); }
 
   /* ── Article Cards ── */
   .article-card {
     background: var(--card); border: 1px solid rgba(0,0,0,0.05);
     border-radius: 16px; padding: 24px 28px; margin-bottom: 12px;
     cursor: pointer; transition: all 0.2s cubic-bezier(0.2,0,0,1);
-    display: block; text-decoration: none; color: inherit;
-    box-shadow: none;
+    display: block; text-decoration: none; color: inherit; box-shadow: none;
   }
-  .article-card:hover {
-    transform: translateY(-1px);
-    border-color: rgba(0,0,0,0.1);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-  }
+  .article-card:hover { transform: translateY(-1px); border-color: rgba(0,0,0,0.1); box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
   .article-card.hidden { display: none; }
-  .article-card .meta {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 8px; flex-wrap: wrap;
-  }
-  .article-card .date {
-    font-size: 13px; color: var(--faint); font-weight: 500;
-    font-variant-numeric: tabular-nums;
-  }
+  .article-card .meta { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+  .article-card .date { font-size: 13px; color: var(--faint); font-weight: 500; font-variant-numeric: tabular-nums; }
   .article-card .tags { display: flex; gap: 5px; flex-wrap: wrap; }
-  .article-card .tag {
-    font-size: 11px; padding: 2px 8px;
-    background: var(--tag-bg); color: var(--tag-text);
-    border-radius: 3px; font-weight: 500; letter-spacing: 0.2px;
-  }
-  .article-card h2 {
-    font-size: 20px; font-weight: 700; line-height: 1.4;
-    margin-bottom: 6px; color: var(--accent);
-  }
-  .article-card p {
-    font-size: 14px; color: var(--muted); line-height: 1.7;
-  }
+  .article-card .tag { font-size: 11px; padding: 2px 8px; background: var(--tag-bg); color: var(--tag-text); border-radius: 3px; font-weight: 500; letter-spacing: 0.2px; }
+  .article-card h2 { font-size: 20px; font-weight: 700; line-height: 1.4; margin-bottom: 6px; color: var(--accent); }
+  .article-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
 
   /* ── Footer ── */
-  .site-footer {
-    text-align: center; padding: 40px 0 28px;
-    color: var(--faint); font-size: 12px; letter-spacing: 0.3px;
-  }
+  .site-footer { text-align: center; padding: 40px 0 28px; color: var(--faint); font-size: 12px; letter-spacing: 0.3px; }
 
   /* ── Mobile ── */
   @media (max-width: 600px) {
@@ -121,11 +86,9 @@
     .site-header { padding: 20px 0 0; }
     .site-logo { font-size: 26px; }
     .site-title { font-size: 13px; }
-    .cat-nav {
-      justify-content: flex-start; flex-wrap: nowrap;
-      overflow-x: auto; -webkit-overflow-scrolling: touch;
-      padding-bottom: 4px; margin-left: -4px; margin-right: -4px;
-    }
+    .topics-grid { grid-template-columns: repeat(2, 1fr); }
+    .topic-card { padding: 12px 10px; }
+    .cat-nav { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; margin-left: -4px; margin-right: -4px; }
     .cat-nav::-webkit-scrollbar { display: none; }
     .cat-pill { flex-shrink: 0; }
     .article-card { padding: 18px 16px; border-radius: 14px; }
@@ -136,11 +99,11 @@
 <body>
 <div class="container">
 
-  <!-- ═══ Compact Header ═══ -->
+  <!-- ═══ Header ═══ -->
   <header class="site-header">
     <div class="site-logo">novora</div>
     <div class="site-title">探索制造与创新的边界</div>
-    <div class="site-sub">包装 · 材料 · AI · 可持续发展</div>
+    <div class="site-sub">包装｜材料｜制造｜AI｜可持续发展｜经营</div>
     <div class="site-stats" id="site-stats"></div>
     <div class="header-divider"></div>
   </header>
@@ -148,12 +111,18 @@
   <!-- ═══ Category Nav ═══ -->
   <nav class="cat-nav" id="cat-nav"></nav>
 
+  <!-- ═══ Hot Topics ═══ -->
+  <section class="topics-section" id="topics-section">
+    <div class="label">热门专题</div>
+    <div class="topics-grid" id="topics-grid"></div>
+  </section>
+
   <!-- ═══ Article List ═══ -->
   <div id="article-list"></div>
 
   <!-- ═══ Footer ═══ -->
   <footer class="site-footer">
-    novora — 产业知识库 · 包装与材料 · AI与可持续发展
+    novora · 产业知识库 · 包装 · 材料 · 制造 · AI · 可持续发展 · 经营
   </footer>
 
 </div>
@@ -161,117 +130,119 @@
 <script>
   // ── Article Database ──
   const articles = [
-    {
-      title: "色母粒的分散性：为什么它决定了你产品的成败",
-      date: "2026-06-08",
-      summary: "因色母粒分散不良导致的质量问题占客诉60%以上。从颜料选择到分散剂配方到加工工艺，一文讲透分散性的四大关键因素，附三种实用检测方法。",
-      tags: ["材料", "制造"],
-      file: "articles/2026-06-08-dispersion.html"
-    },
-    {
-      title: "色母粒销售技巧与叙事体系",
-      date: "2026-06-07",
-      summary: "11章完整弹药库：从核心叙事框架到30条异议处理，从10个场景化故事到30个短视频标题库。不是卖色母粒，而是解决塑料企业的生产问题。",
-      tags: ["销售", "材料"],
-      file: "articles/sales-skills.html"
-    },
-    {
-      title: "世界文学名著典藏 · 280部导读",
-      date: "2026-06-07",
-      summary: "17卷分卷：从古希腊荷马史诗到现代经典，涵盖英国、法国、俄国、德国、意大利、拉美、亚洲等全球文学。每本含中英书名、作者、导读与免费阅读链接。",
-      tags: ["阅读"],
-      file: "articles/classics.html"
-    },
-    {
-      title: "色母粒到底是什么？一分钟搞懂",
-      date: "2026-06-07",
-      summary: "从零开始的色母粒科普：为什么不用色粉直接染色？色母粒和色粉的本质区别是什么？一文讲清楚。",
-      tags: ["材料", "制造"],
-      file: "articles/what-is-masterbatch.html"
-    },
-    {
-      title: "瓶子发黄怎么办？塑料厂急诊室",
-      date: "2026-06-07",
-      summary: "PET瓶发黄、注塑件黑点、吹塑件破裂——这些看似不同的质量问题，往往指向同一个幕后黑手。完整诊断框架与解决方案。",
-      tags: ["材料", "制造"],
-      file: "articles/yellow-bottles.html"
-    },
-    {
-      title: "为什么低价色母粒最后反而更贵？",
-      date: "2026-06-07",
-      summary: "三组算账对比：便宜色母粒VS高品质色母粒，添加量、不良率、停机率——真正的省钱是什么？",
-      tags: ["材料", "制造"],
-      file: "articles/cheap-masterbatch.html"
-    },
-    {
-      title: "一个配方，一年帮客户省了120万",
-      date: "2026-06-07",
-      summary: "真实案例：添加量从4%优化到2.5%效果不变。色母粒不是越便宜越好——关键是综合成本。五维度成本拆解。",
-      tags: ["材料", "制造"],
-      file: "articles/roi-120wan.html"
-    },
-    {
-      title: "10万只瓶子报废，只因为颜色差了0.5%",
-      date: "2026-06-07",
-      summary: "客户验货当天，10万只瓶子直接退货。问题竟然出在色母粒添加比例上。塑料行业最贵的不是色母粒，而是返工。",
-      tags: ["材料", "制造"],
-      file: "articles/bottles-100k.html"
-    },
-    {
-      title: "Silgan Dispensing 深度调研报告",
-      date: "2026-05-16",
-      summary: "西尔格分配系统全球最完整深度分析。14页覆盖：集团架构与三大事业部、中国市场28年深耕、5笔重大收购、五年财务全景、核心技术平台。",
-      tags: ["包装", "制造"],
-      file: "articles/silgan-dispensing.html"
-    }
+    { title: "色母粒的分散性：为什么它决定了你产品的成败", date: "2026-06-08", summary: "因色母粒分散不良导致的质量问题占客诉60%以上。从颜料选择到分散剂配方到加工工艺，一文讲透分散性的四大关键因素，附三种实用检测方法。", tags: ["材料","制造"], topics: ["色母粒"], file: "articles/2026-06-08-dispersion.html" },
+    { title: "色母粒销售技巧与叙事体系", date: "2026-06-07", summary: "11章完整弹药库：从核心叙事框架到30条异议处理，从10个场景化故事到30个短视频标题库。", tags: ["经营","材料"], topics: ["色母粒","B2B销售"], file: "articles/sales-skills.html" },
+    { title: "世界文学名著典藏 · 280部导读", date: "2026-06-07", summary: "17卷分卷：从古希腊荷马史诗到现代经典，涵盖英国、法国、俄国、德国、意大利、拉美、亚洲等全球文学。", tags: [], topics: [], file: "articles/classics.html" },
+    { title: "色母粒到底是什么？一分钟搞懂", date: "2026-06-07", summary: "从零开始的色母粒科普：为什么不用色粉直接染色？色母粒和色粉的本质区别是什么？一文讲清楚。", tags: ["材料","制造"], topics: ["色母粒"], file: "articles/what-is-masterbatch.html" },
+    { title: "瓶子发黄怎么办？塑料厂急诊室", date: "2026-06-07", summary: "PET瓶发黄、注塑件黑点、吹塑件破裂——这些看似不同的质量问题，往往指向同一个幕后黑手。完整诊断框架与解决方案。", tags: ["材料","制造"], topics: ["色母粒","注塑制造"], file: "articles/yellow-bottles.html" },
+    { title: "为什么低价色母粒最后反而更贵？", date: "2026-06-07", summary: "三组算账对比：便宜色母粒VS高品质色母粒，添加量、不良率、停机率——真正的省钱是什么？", tags: ["材料","制造"], topics: ["色母粒"], file: "articles/cheap-masterbatch.html" },
+    { title: "一个配方，一年帮客户省了120万", date: "2026-06-07", summary: "真实案例：添加量从4%优化到2.5%效果不变。色母粒不是越便宜越好——关键是综合成本。", tags: ["材料","制造"], topics: ["色母粒"], file: "articles/roi-120wan.html" },
+    { title: "10万只瓶子报废，只因为颜色差了0.5%", date: "2026-06-07", summary: "客户验货当天，10万只瓶子直接退货。问题竟然出在色母粒添加比例上。", tags: ["材料","制造"], topics: ["色母粒"], file: "articles/bottles-100k.html" },
+    { title: "Silgan Dispensing 深度调研报告", date: "2026-05-16", summary: "西尔格分配系统全球最完整深度分析。14页覆盖：集团架构、中国市场28年深耕、5笔重大收购、核心技术平台。", tags: ["包装","制造"], topics: ["化妆品包装","定量泵系统"], file: "articles/silgan-dispensing.html" }
   ];
 
   // ── Dynamic Stats ──
-  const topicSet = new Set();
-  articles.forEach(a => a.tags.forEach(t => topicSet.add(t)));
   document.getElementById('site-stats').innerHTML =
     articles.length + '篇文章' +
     '<span class="sep">·</span>' +
-    topicSet.size + '个专题' +
+    '7个专题' +
     '<span class="sep">·</span>' +
     '持续更新';
 
-  // ── Category System ──
-  const categories = ['全部文章', '包装', '材料', '制造', 'AI', '可持续发展', '销售', '管理'];
+  // ── Category System (7 categories) ──
+  const categories = ['全部', '包装', '材料', '制造', '可持续发展', 'AI', '经营'];
   const catNav = document.getElementById('cat-nav');
-
-  // Per-category counts
   const catCounts = {};
   categories.forEach(c => { catCounts[c] = 0; });
   articles.forEach(a => {
-    catCounts['全部文章']++;
-    a.tags.forEach(t => {
-      if (categories.includes(t)) catCounts[t]++;
-    });
+    catCounts['全部']++;
+    a.tags.forEach(t => { if (categories.includes(t)) catCounts[t]++; });
   });
 
-  let activeCat = '全部文章';
+  let activeCat = '全部';
 
   function renderCategories() {
-    const visible = categories.filter(c => catCounts[c] > 0 || c === '全部文章');
+    const visible = categories.filter(c => catCounts[c] > 0 || c === '全部');
     catNav.innerHTML = visible.map(c => {
       const cls = c === activeCat ? ' active' : '';
       return '<span class="cat-pill' + cls + '" data-cat="' + c + '">' + c + '</span>';
     }).join('');
     catNav.querySelectorAll('.cat-pill').forEach(p => {
       p.addEventListener('click', function() {
-        activeCat = this.getAttribute('data-cat');
+        const cat = this.getAttribute('data-cat');
+        activeCat = cat;
+        activeTopic = null;
         renderCategories();
-        filterArticles();
+        renderTopics();
+        filterByCategoryAndTopic();
       });
     });
   }
 
-  function filterArticles() {
+  // ── Hot Topics (8 curated topics, keyword-matched) ──
+  const hotTopics = [
+    { id: '化妆品包装', name: '化妆品包装', keywords: ['包装','化妆品','瓶器','泵头','Silgan'] },
+    { id: '定量泵系统', name: '定量泵系统', keywords: ['泵','Dispensing','分配','喷雾'] },
+    { id: 'Airless Pump', name: 'Airless Pump', keywords: ['真空泵','Airless','无吸管'] },
+    { id: '色母粒', name: '色母粒', keywords: ['色母粒','色母','着色','颜料','配色','色彩','颜色','色差','色斑'] },
+    { id: '注塑制造', name: '注塑制造', keywords: ['注塑','模具','成型','吹塑','挤出','PET','PP','PE'] },
+    { id: 'PCR包装', name: 'PCR包装', keywords: ['PCR','再生','回收','可持续','Mono','ESG','环保'] },
+    { id: 'AI制造', name: 'AI制造', keywords: ['AI','人工智能','自动化','智能'] },
+    { id: 'B2B销售', name: 'B2B销售', keywords: ['销售','客户','B2B','谈判','报价'] }
+  ];
+
+  const topicCounts = {};
+  hotTopics.forEach(t => { topicCounts[t.id] = 0; });
+  articles.forEach(a => {
+    const fullText = a.title + ' ' + a.summary + ' ' + (a.topics||[]).join(' ') + ' ' + a.tags.join(' ');
+    hotTopics.forEach(ht => {
+      if (ht.keywords.some(kw => fullText.includes(kw))) topicCounts[ht.id]++;
+    });
+  });
+
+  let activeTopic = null;
+
+  function renderTopics() {
+    const grid = document.getElementById('topics-grid');
+    grid.innerHTML = hotTopics.map(ht => {
+      const cls = activeTopic === ht.id ? ' active' : '';
+      return '<div class="topic-card' + cls + '" data-topic="' + ht.id + '">' +
+        '<div class="topic-name">' + ht.name + '</div>' +
+        '<div class="topic-count">' + topicCounts[ht.id] + ' 篇文章</div>' +
+      '</div>';
+    }).join('');
+    grid.querySelectorAll('.topic-card').forEach(card => {
+      card.addEventListener('click', function() {
+        const tid = this.getAttribute('data-topic');
+        activeTopic = activeTopic === tid ? null : tid;
+        if (activeTopic) { activeCat = '全部'; renderCategories(); }
+        renderTopics();
+        filterByCategoryAndTopic();
+      });
+    });
+  }
+
+  function filterByCategoryAndTopic() {
     document.querySelectorAll('.article-card').forEach(card => {
-      if (activeCat === '全部文章') { card.classList.remove('hidden'); return; }
       const tags = card.getAttribute('data-tags').split(',');
-      card.classList.toggle('hidden', !tags.some(t => t.trim() === activeCat));
+      const topicData = card.getAttribute('data-topics');
+      let show = true;
+
+      // Category filter
+      if (activeCat !== '全部') {
+        show = tags.some(t => t.trim() === activeCat);
+      }
+
+      // Topic filter (overlay)
+      if (show && activeTopic) {
+        const topicKWs = hotTopics.find(ht => ht.id === activeTopic);
+        if (topicKWs) {
+          const fullText = (topicData || '') + ' ' + tags.join(' ');
+          show = topicKWs.keywords.some(kw => fullText.includes(kw));
+        }
+      }
+
+      card.classList.toggle('hidden', !show);
     });
   }
 
@@ -282,12 +253,12 @@
     card.className = 'article-card';
     card.href = a.file;
     card.setAttribute('data-tags', a.tags.join(','));
+    card.setAttribute('data-topics', (a.topics || []).join(','));
+    const tagHTML = a.tags.length ? '<span class="tags">' + a.tags.map(t => '<span class="tag">' + t + '</span>').join('') + '</span>' : '';
     card.innerHTML =
       '<div class="meta">' +
         '<span class="date">' + a.date + '</span>' +
-        '<span class="tags">' +
-          a.tags.map(t => '<span class="tag">' + t + '</span>').join('') +
-        '</span>' +
+        tagHTML +
       '</div>' +
       '<h2>' + a.title + '</h2>' +
       '<p>' + a.summary + '</p>';
@@ -295,6 +266,7 @@
   });
 
   renderCategories();
+  renderTopics();
 </script>
 
 </body>
