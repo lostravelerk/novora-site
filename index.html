@@ -134,6 +134,27 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script>
+  // Auto-refresh: check for new version on load & tab return
+  (function() {
+    var VER = 'https://coadyke.github.io/novora-site/version.txt';
+    var KEY = 'nv_v';
+    function check() {
+      fetch(VER + '?t=' + Date.now(), {cache: 'no-store'})
+        .then(function(r) { return r.text(); })
+        .then(function(v) {
+          v = v.trim();
+          var old = localStorage.getItem(KEY);
+          localStorage.setItem(KEY, v);
+          if (old && old !== v) location.reload();
+        })
+        .catch(function(){}); // offline: silent
+    }
+    check();
+    document.addEventListener('visibilitychange', function() {
+      if (!document.hidden) check();
+    });
+  })();
+
   // Format UV counter: "No.12,486"
   (function check() {
     var el = document.getElementById('busuanzi_value_site_uv');
