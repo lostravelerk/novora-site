@@ -13,21 +13,58 @@
     --pill-text: #6B7280; --pill-border: #E5E7EB;
   }
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; font-size: 16px; line-height: 1.75; color: var(--text); background: var(--bg); padding: 20px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-  .container { max-width: 700px; margin: 0 auto; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; font-size: 16px; line-height: 1.75; color: var(--text); background: var(--bg); padding: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  .container { max-width: 700px; margin: 0 auto; padding: 0 20px; }
 
-  .site-header { text-align: center; padding: 24px 0 0; }
-  .site-logo { font-size: 30px; font-weight: 700; color: var(--accent); letter-spacing: -0.6px; line-height: 1; }
-  .site-title { font-size: 14px; font-weight: 500; color: var(--text); margin-top: 10px; letter-spacing: 0.2px; }
-  .site-sub { font-size: 12px; color: var(--muted); margin-top: 6px; letter-spacing: 0.6px; }
-  .site-stats { font-size: 12px; color: var(--faint); margin-top: 8px; letter-spacing: 0.2px; }
-  .site-stats .sep { color: #D1D5DB; margin: 0 5px; }
-  .header-divider { width: 28px; height: 1.5px; background: var(--accent); margin: 14px auto 0; border-radius: 1px; opacity: 0.6; }
+  /* ── Sticky Header (ultra-compact) ── */
+  .sticky-head {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(247,247,247,0.92); backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 10px 20px 6px;
+  }
+  .sticky-head-inner { max-width: 700px; margin: 0 auto; }
+  .head-row1 {
+    display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  }
+  .site-logo {
+    font-size: 22px; font-weight: 700; color: var(--accent);
+    letter-spacing: -0.4px; line-height: 1; white-space: nowrap;
+  }
+  .site-sub {
+    font-size: 11px; color: var(--faint); letter-spacing: 0.3px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    flex: 1; min-width: 0;
+  }
+  .head-stats {
+    font-size: 11px; color: var(--faint); white-space: nowrap;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .head-stats .sep { color: #D1D5DB; }
+  .head-sub-btn {
+    font-size: 11px; font-weight: 500; padding: 2px 10px;
+    border-radius: 10px; border: 1px solid var(--accent);
+    color: var(--accent); background: transparent; cursor: pointer;
+    transition: all 0.15s; white-space: nowrap; letter-spacing: 0.2px;
+  }
+  .head-sub-btn:hover { background: var(--accent); color: #fff; }
 
-  .cat-nav { display: flex; justify-content: center; gap: 6px; margin: 12px 0 0; flex-wrap: wrap; }
-  .cat-pill { font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 14px; border: 1px solid var(--pill-border); cursor: pointer; transition: all 0.15s; background: var(--pill-bg); color: var(--pill-text); white-space: nowrap; user-select: none; }
+  .cat-nav {
+    display: flex; gap: 5px; margin-top: 7px; flex-wrap: wrap;
+  }
+  .cat-pill {
+    font-size: 11px; font-weight: 500; padding: 3px 12px;
+    border-radius: 12px; border: 1px solid var(--pill-border);
+    cursor: pointer; transition: all 0.15s;
+    background: var(--pill-bg); color: var(--pill-text);
+    white-space: nowrap; user-select: none;
+  }
   .cat-pill:hover { background: #E5E7EB; border-color: #D1D5DB; }
   .cat-pill.active { background: var(--pill-active-bg); color: var(--pill-active-text); border-color: var(--pill-active-bg); }
+
+  /* page content below header */
+  .page-content { padding-top: 16px; }
 
   .article-card { background: var(--card); border: 1px solid rgba(0,0,0,0.05); border-radius: 16px; padding: 24px 28px; margin-bottom: 12px; cursor: pointer; transition: all 0.2s cubic-bezier(0.2,0,0,1); display: block; text-decoration: none; color: inherit; box-shadow: none; }
   .article-card:hover { transform: translateY(-1px); border-color: rgba(0,0,0,0.1); box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
@@ -41,9 +78,7 @@
 
   .site-footer { text-align: center; padding: 40px 0 28px; color: var(--faint); font-size: 12px; letter-spacing: 0.3px; }
 
-  /* ── Subscribe ── */
-  .sub-btn { display: inline-block; font-size: 12px; font-weight: 500; padding: 4px 16px; border-radius: 14px; border: 1px solid var(--accent); color: var(--accent); background: transparent; cursor: pointer; transition: all 0.15s; white-space: nowrap; letter-spacing: 0.3px; margin-left: 6px; }
-  .sub-btn:hover { background: var(--accent); color: #fff; }
+  /* ── Subscribe Modal (unchanged) ── */
   .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15,39,71,0.5); z-index: 999; justify-content: center; align-items: center; padding: 20px; }
   .modal-overlay.show { display: flex; }
   .modal { background: #fff; border-radius: 16px; padding: 32px 28px; width: 100%; max-width: 420px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); position: relative; animation: modal-in 0.2s ease; }
@@ -62,36 +97,37 @@
   .modal .sub-msg { font-size: 13px; margin-top: 10px; text-align: center; display: none; }
   .modal .sub-msg.success { color: #059669; display: block; }
   .modal .sub-msg.error { color: #DC2626; display: block; }
-  .sub-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 0; padding: 0 0 12px; }
+  .sub-row { display: none; } /* old, replaced by head-sub-btn */
 
   @media (max-width: 600px) {
-    body { padding: 12px; font-size: 15px; }
-    .site-header { padding: 20px 0 0; }
-    .site-logo { font-size: 26px; }
-    .site-title { font-size: 13px; }
-    .cat-nav { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; margin-left: -4px; margin-right: -4px; }
+    .container { padding: 0 12px; }
+    .sticky-head { padding: 8px 12px 5px; }
+    .site-logo { font-size: 20px; }
+    .site-sub { font-size: 10px; }
+    .head-stats { font-size: 10px; }
+    .head-sub-btn { font-size: 10px; padding: 2px 8px; }
+    .cat-nav { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 2px; }
     .cat-nav::-webkit-scrollbar { display: none; }
-    .cat-pill { flex-shrink: 0; }
+    .cat-pill { flex-shrink: 0; font-size: 10px; padding: 3px 10px; }
     .article-card { padding: 18px 16px; border-radius: 14px; }
     .article-card h2 { font-size: 18px; }
   }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="sticky-head">
+  <div class="sticky-head-inner">
+    <div class="head-row1">
+      <span class="site-logo">novora</span>
+      <span class="site-sub">包装｜材料｜制造｜质量｜AI｜可持续发展｜阅读</span>
+      <span class="head-stats" id="site-stats"></span>
+      <button class="head-sub-btn" id="sub-btn">订阅</button>
+    </div>
+    <nav class="cat-nav" id="cat-nav"></nav>
+  </div>
+</div>
 
-  <header class="site-header">
-    <div class="site-logo">novora</div>
-    <div class="site-title">探索制造与创新的边界</div>
-    <div class="site-sub">包装｜材料｜制造｜质量｜AI｜可持续发展｜阅读</div>
-    <div class="site-stats" id="site-stats"></div>
-    <div class="header-divider"></div>
-  </header>
-
-  <nav class="cat-nav" id="cat-nav"></nav>
-
-  <div class="sub-row"><button class="sub-btn" id="sub-btn">订阅更新</button></div>
-
+<div class="container page-content">
   <div id="article-list"></div>
 
   <!-- Subscription Modal -->
@@ -133,7 +169,7 @@
     { title: "Silgan Dispensing 深度调研报告", date: "2026-05-16", summary: "西尔格分配系统全球最完整深度分析。14页覆盖：集团架构、中国市场28年深耕、5笔重大收购、核心技术平台。", tags: ["包装","制造"], topics: ["化妆品包装","定量泵系统"], file: "articles/silgan-dispensing.html" }
   ];
 
-  document.getElementById('site-stats').innerHTML = articles.length + '篇文章<span class="sep">·</span>8个栏目<span class="sep">·</span>持续更新<span class="sep">·</span><span id="busuanzi_container_site_uv" style="display:inline;">No.<span id="busuanzi_value_site_uv"></span></span>';
+  document.getElementById('site-stats').innerHTML = articles.length + '篇<span class="sep">·</span>8栏目<span class="sep">·</span><span id="busuanzi_container_site_uv" style="display:inline;">No.<span id="busuanzi_value_site_uv"></span></span>';
 
   // ── 7 categories ──
   const categories = ['全部', '包装', '材料', '制造', '质量', '可持续发展', 'AI', '阅读'];
