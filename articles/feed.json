@@ -1,5 +1,15 @@
 [
   {
+    "title": "为什么你的CPK总在1.0以下？注塑车间被忽视的5个系统性偏差",
+    "date": "2026-06-09",
+    "summary": "客户审核CPK报告0.82不及格。真正问题不在设备不在模具——取样策略、测量系统、模腔差异、材料批次、参数漂移，五个系统性偏差逐层拆解。附两个真实车间诊断案例。",
+    "tags": [
+      "质量",
+      "制造"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/2026-06-09-cpk-injection.html"
+  },
+  {
     "title": "Airless Pump 如何进行真空保持测试？",
     "date": "2026-06-08",
     "summary": "高端品牌供应商审核必考项目。从三重密封到28天全周期检测，从负压挑战到温差循环，全面解析真空保持测试的方法论与判定标准。",
@@ -30,13 +40,13 @@
     "url": "https://coadyke.github.io/novora-site/articles/sales-skills.html"
   },
   {
-    "title": "Silgan Dispensing 深度调研报告",
-    "date": "2026-05-16",
-    "summary": "西尔格分配系统全球最完整深度分析。集团架构与三大事业部、中国市场28年深耕、5笔重大收购、ERA/MELODIE核心技术平台全解。",
+    "title": "世界文学名著典藏 · 280部导读",
+    "date": "2026-06-07",
+    "summary": "17卷分卷：从古希腊荷马史诗到现代经典，涵盖英国、法国、俄国、德国、意大利、拉美、亚洲等全球文学。",
     "tags": [
-      "包装"
+      "阅读"
     ],
-    "url": "https://coadyke.github.io/novora-site/articles/silgan-dispensing.html"
+    "url": "https://coadyke.github.io/novora-site/articles/classics.html"
   },
   {
     "title": "色母粒到底是什么？一分钟搞懂",
@@ -47,16 +57,5 @@
       "制造"
     ],
     "url": "https://coadyke.github.io/novora-site/articles/what-is-masterbatch.html"
-  },
-  {
-    "title": "瓶子发黄怎么办？塑料厂急诊室",
-    "date": "2026-06-07",
-    "summary": "PET瓶发黄、注塑件黑点、吹塑件破裂——完整诊断框架与解决方案，从氧化降解到助剂迁移逐层排查。",
-    "tags": [
-      "材料",
-      "制造",
-      "质量"
-    ],
-    "url": "https://coadyke.github.io/novora-site/articles/yellow-bottles.html"
   }
 ]
