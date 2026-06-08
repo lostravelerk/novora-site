@@ -138,7 +138,7 @@
   (function check() {
     var el = document.getElementById('busuanzi_value_site_uv');
     if (el && el.textContent && /^\d+$/.test(el.textContent.trim())) {
-      el.textContent = Number(el.textContent.trim()).toLocaleString('en-US');
+      el.textContent = (6968 + Number(el.textContent.trim())).toLocaleString('en-US');
     } else {
       setTimeout(check, 800);
     }
