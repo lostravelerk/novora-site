@@ -37,16 +37,29 @@
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     flex: 1; min-width: 0;
   }
+  .head-row2 {
+    display: flex; align-items: center; gap: 8px; margin-top: 4px;
+  }
   .head-stats {
     font-size: 11px; color: var(--faint); white-space: nowrap;
     display: flex; align-items: center; gap: 6px;
   }
   .head-stats .sep { color: #D1D5DB; }
+  .megee-pill {
+    display: inline-flex; align-items: center;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.2px;
+    padding: 2px 10px; border-radius: 999px;
+    color: var(--muted); background: #F5F7FA;
+    text-decoration: none; white-space: nowrap;
+    transition: all 0.15s;
+  }
+  .megee-pill:hover { color: #374151; background: #E5E7EB; }
   .head-sub-btn {
     font-size: 11px; font-weight: 500; padding: 2px 10px;
     border-radius: 10px; border: 1px solid var(--accent);
     color: var(--accent); background: transparent; cursor: pointer;
     transition: all 0.15s; white-space: nowrap; letter-spacing: 0.2px;
+    margin-left: auto;
   }
   .head-sub-btn:hover { background: var(--accent); color: #fff; }
 
@@ -105,6 +118,7 @@
     .site-logo { font-size: 20px; }
     .site-sub { font-size: 10px; }
     .head-stats { font-size: 10px; }
+    .megee-pill { font-size: 10px; padding: 2px 8px; }
     .head-sub-btn { font-size: 10px; padding: 2px 8px; }
     .cat-nav { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 2px; }
     .cat-nav::-webkit-scrollbar { display: none; }
@@ -120,7 +134,10 @@
     <div class="head-row1">
       <span class="site-logo">novora</span>
       <span class="site-sub">包装｜材料｜制造｜质量｜AI｜可持续发展｜阅读</span>
+    </div>
+    <div class="head-row2">
       <span class="head-stats" id="site-stats"></span>
+      <a href="https://megee.design" class="megee-pill" target="_blank" rel="noopener">MEGEE⁺&#8201;|&#8201;Packaging and more.</a>
       <button class="head-sub-btn" id="sub-btn">订阅</button>
     </div>
     <nav class="cat-nav" id="cat-nav"></nav>
