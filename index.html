@@ -46,19 +46,12 @@
     display: flex; align-items: center; gap: 6px;
   }
   .head-stats .sep { color: #D1D5DB; }
-  .megee-capsule {
-    display: inline-flex; align-items: center;
-    font-size: 12px; font-weight: 500; letter-spacing: 0.1px;
-    padding: 4px 10px; border-radius: 999px;
-    color: #486174; background: #EEF3F7;
-    border: 1px solid #DDE7EF;
-    text-decoration: none; white-space: nowrap;
-    transition: all 0.15s;
+  .megee-inline {
+    font-size: 12px; font-weight: 500; color: #94A3B8;
+    text-decoration: none; white-space: nowrap; cursor: pointer;
+    transition: color 0.15s;
   }
-  .megee-capsule:hover {
-    color: var(--accent); background: #E4EDF5;
-    border-color: #C9D8E5;
-  }
+  .megee-inline:hover { color: var(--accent); }
   .cat-row {
     display: flex; align-items: center; justify-content: space-between;
     margin-top: 7px;
@@ -127,7 +120,7 @@
     .site-logo { font-size: 20px; }
     .site-sub { font-size: 10px; }
     .head-stats { font-size: 10px; }
-    .megee-capsule { font-size: 10px; padding: 3px 8px; }
+    .megee-inline { font-size: 10px; }
     .head-sub-btn { font-size: 10px; padding: 2px 8px; }
     .head-row2 { gap: 8px; }
     .cat-row { gap: 6px; }
@@ -148,7 +141,6 @@
     </div>
     <div class="head-row2">
       <span class="head-stats" id="site-stats"></span>
-      <a href="https://megee.design" class="megee-capsule" target="_blank" rel="noopener">megee⁺, packaging and more.</a>
     </div>
     <div class="cat-row">
       <nav class="cat-nav" id="cat-nav"></nav>
@@ -199,7 +191,7 @@
     { title: "Silgan Dispensing 深度调研报告", date: "2026-05-16", summary: "西尔格分配系统全球最完整深度分析。14页覆盖：集团架构、中国市场28年深耕、5笔重大收购、核心技术平台。", tags: ["包装","制造"], topics: ["化妆品包装","定量泵系统"], file: "articles/silgan-dispensing.html" }
   ];
 
-  document.getElementById('site-stats').innerHTML = articles.length + '篇<span class="sep">·</span>8栏目<span class="sep">·</span><span id="busuanzi_container_site_uv" style="display:inline;">No.<span id="busuanzi_value_site_uv"></span></span>';
+  document.getElementById('site-stats').innerHTML = articles.length + '篇<span class="sep">·</span>8栏目<span class="sep">·</span><span id="busuanzi_container_site_uv" style="display:inline;">No.<span id="busuanzi_value_site_uv"></span></span><span class="sep">·</span> ↗ <a href="https://megee.design" class="megee-inline" target="_blank" rel="noopener">megee⁺, packaging and more.</a>';
 
   // ── 7 categories ──
   const categories = ['全部', '包装', '材料', '制造', '质量', '可持续发展', 'AI', '阅读'];
