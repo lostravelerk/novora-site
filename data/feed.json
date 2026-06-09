@@ -1,0 +1,151 @@
+{
+  "site": {
+    "name": "novora",
+    "url": "https://coadyke.github.io/novora-site/",
+    "description": "包装与制造产业知识库。聚焦包装、材料、制造、质量、可持续发展与AI应用。",
+    "language": "zh-CN",
+    "updated": "2026-06-10T07:00:00+08:00"
+  },
+  "articles": [
+    {
+      "title": "注塑车间为什么越来越依赖自动化？从三班倒到无人值守的演进逻辑",
+      "date": "2026-06-10",
+      "summary": "注塑自动化不只关乎成本。从机械手到MES到AI视觉，五阶段演进路径、投资决策框架与实施陷阱全拆解。",
+      "tags": ["制造","AI"],
+      "topics": ["注塑自动化","工业4.0"],
+      "slug": "injection-molding-automation",
+      "url": "https://coadyke.github.io/novora-site/articles/2026-06-10-injection-molding-automation.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
+    {
+      "title": "什么是 Airless Pump？真空泵百科词条",
+      "date": "2026-06-10",
+      "summary": "定义、工作原理、历史发展、行业应用、典型案例与常见误区。包装领域核心概念，Novora百科全书第一条词条。",
+      "tags": ["包装","制造"],
+      "topics": ["Airless Pump","百科"],
+      "slug": "airless-pump",
+      "url": "https://coadyke.github.io/novora-site/articles/encyclopedia/airless-pump.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
+    {
+      "title": "湖州工厂试产：与时间来一场赛跑",
+      "date": "2026-06-09",
+      "summary": "南浔美集项目进入试产冲刺。设备调试、用工保障、政企协同全速推进，从土建到交付的每一环都在与时间博弈。现场视频直击。",
+      "tags": ["制造","洞察"],
+      "topics": ["工厂建设","湖州美集"],
+      "slug": "huzhou-trial-production",
+      "url": "https://coadyke.github.io/novora-site/articles/2026-06-09-huzhou-trial-production.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
+    {
+      "title": "为什么你的CPK总在1.0以下？注塑车间被忽视的5个系统性偏差",
+      "date": "2026-06-09",
+      "summary": "客户审核CPK报告0.82不及格。取样策略、测量系统、模腔差异、材料批次、参数漂移，五个系统性偏差逐层拆解。附两个真实车间诊断案例。",
+      "tags": ["质量","制造"],
+      "topics": ["CPK","SPC","注塑制造","质量管理"],
+      "slug": "cpk-injection",
+      "url": "https://coadyke.github.io/novora-site/articles/2026-06-09-cpk-injection.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
+    {
+      "title": "Airless Pump 如何进行真空保持测试？",
+      "date": "2026-06-08",
+      "summary": "高端品牌做供应商审核时必考的项目。从三重密封结构到28天全周期检测，从负压挑战到温差循环，全面解析真空保持测试的方法论与判定标准。",
+      "tags": ["包装","制造","质量"],
+      "topics": ["Airless Pump","化妆品包装"],
+      "slug": "airless-vacuum",
+      "url": "https://coadyke.github.io/novora-site/articles/2026-06-08-airless-vacuum.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
+    {
+      "title": "色母粒的分散性：为什么它决定了你产品的成败",
+      "date": "2026-06-08",
+      "summary": "因色母粒分散不良导致的质量问题占客诉60%以上。从颜料选择到分散剂配方到加工工艺，一文讲透分散性的四大关键因素，附三种实用检测方法。",
+      "tags": ["材料","制造","质量"],
+      "topics": ["色母粒"],
+      "slug": "dispersion",
+      "url": "https://coadyke.github.io/novora-site/articles/2026-06-08-dispersion.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
+    {
+      "title": "色母粒销售技巧与叙事体系",
+      "date": "2026-06-07",
+      "summary": "11章完整弹药库：从核心叙事框架到30条异议处理，从10个场景化故事到30个短视频标题库。不卖色母粒，而是解决塑料企业的生产问题。",
+      "tags": ["材料"],
+      "topics": ["色母粒","B2B销售"],
+      "slug": "sales-skills",
+      "url": "https://coadyke.github.io/novora-site/articles/sales-skills.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
+    {
+      "title": "世界文学名著典藏 · 280部导读",
+      "date": "2026-06-07",
+      "summary": "17卷分卷：从古希腊荷马史诗到现代经典，涵盖英国、法国、俄国、德国、意大利、拉美、亚洲等全球文学。",
+      "tags": ["阅读"],
+      "topics": [],
+      "slug": "classics",
+      "url": "https://coadyke.github.io/novora-site/articles/classics.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
+    {
+      "title": "色母粒到底是什么？一分钟搞懂",
+      "date": "2026-06-07",
+      "summary": "从零开始的色母粒科普：为什么不用色粉直接染色？色母粒和色粉的本质区别是什么？",
+      "tags": ["材料","制造"],
+      "topics": ["色母粒"],
+      "slug": "what-is-masterbatch",
+      "url": "https://coadyke.github.io/novora-site/articles/what-is-masterbatch.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
+    {
+      "title": "瓶子发黄怎么办？塑料厂急诊室",
+      "date": "2026-06-07",
+      "summary": "PET瓶发黄、注塑件黑点、吹塑件破裂——这些看似不同的质量问题，往往指向同一个幕后黑手。完整诊断框架与解决方案。",
+      "tags": ["材料","制造","质量"],
+      "topics": ["色母粒","注塑制造"],
+      "slug": "yellow-bottles",
+      "url": "https://coadyke.github.io/novora-site/articles/yellow-bottles.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
+    {
+      "title": "为什么低价色母粒最后反而更贵？",
+      "date": "2026-06-07",
+      "summary": "三组算账对比：便宜色母粒VS高品质色母粒，添加量、不良率、停机率——真正的省钱是什么？",
+      "tags": ["材料","制造"],
+      "topics": ["色母粒"],
+      "slug": "cheap-masterbatch",
+      "url": "https://coadyke.github.io/novora-site/articles/cheap-masterbatch.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
+    {
+      "title": "一个配方，一年帮客户省了120万",
+      "date": "2026-06-07",
+      "summary": "真实案例：添加量从4%优化到2.5%效果不变。色母粒不是越便宜越好——关键是综合成本。",
+      "tags": ["材料","制造"],
+      "topics": ["色母粒"],
+      "slug": "roi-120wan",
+      "url": "https://coadyke.github.io/novora-site/articles/roi-120wan.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
+    {
+      "title": "10万只瓶子报废，只因为颜色差了0.5%",
+      "date": "2026-06-07",
+      "summary": "客户验货当天，10万只瓶子直接退货。问题竟然出在色母粒添加比例上。",
+      "tags": ["材料","制造","质量"],
+      "topics": ["色母粒"],
+      "slug": "bottles-100k",
+      "url": "https://coadyke.github.io/novora-site/articles/bottles-100k.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
+    {
+      "title": "Silgan Dispensing 深度调研报告",
+      "date": "2026-05-16",
+      "summary": "西尔格分配系统全球最完整深度分析。14页覆盖：集团架构、中国市场28年深耕、5笔重大收购、核心技术平台。",
+      "tags": ["包装","制造"],
+      "topics": ["化妆品包装","定量泵系统"],
+      "slug": "silgan-dispensing",
+      "url": "https://coadyke.github.io/novora-site/articles/silgan-dispensing.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    }
+  ]
+}
