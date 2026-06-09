@@ -20,7 +20,7 @@
 })();
 </script>
 
-<meta name="version" content="20260609v22">
+<meta name="version" content="20260609v23">
 <meta property="og:title" content="novora — 探索制造与创新的边界">
 <meta property="og:description" content="包装与制造产业知识库。聚焦包装、材料、制造、质量、可持续发展与AI应用。">
 <meta property="og:url" content="https://coadyke.github.io/novora-site/">
@@ -56,8 +56,8 @@
   /* ── Sticky Header (ultra-compact) ── */
   .sticky-head {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(247,247,247,0.92); backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(247,247,247,0.82); backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(0,0,0,0.06);
     padding: 10px 20px 6px;
   }
@@ -331,11 +331,11 @@
       }
     }
     shuffle(unique);
-    var count = Math.min(unique.length, 30 + Math.floor(Math.random() * 16));
+    var count = Math.min(unique.length, 45 + Math.floor(Math.random() * 16));
     var picked = unique.slice(0, count);
 
     // Color palette: cold gray-blue tones only
-    var colors = ['#94A3B8','#64748B','#8593A8','#9CA3AF'];
+    var colors = ['#64748B','#475569','#556271','#6B7280','#788596'];
 
     var allSpans = [];
 
@@ -364,7 +364,7 @@
                  : isShort ? (14 + Math.floor(Math.random() * 10))
                  : (11 + Math.floor(Math.random() * 11)); // 11-21px
 
-        var opacity = 0.08 + Math.random() * 0.08; // 8-16%
+        var opacity = 0.10 + Math.random() * 0.08; // 10-18%
         var rotation = -15 + Math.random() * 30;     // -15° to +15°
         var color = colors[Math.floor(Math.random() * colors.length)];
 
