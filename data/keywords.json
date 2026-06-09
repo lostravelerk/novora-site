@@ -1,0 +1,24 @@
+{
+  "static": {
+    "brand": ["novora", "megee", "bdf", "megee⁺"],
+    "categories": ["包装", "材料", "制造", "质量", "AI", "可持续发展", "洞察", "阅读"]
+  },
+  "dynamic": [
+    "Airless Pump", "Fine Mist", "Lotion Pump", "Foamer Pump", "Dispensing System",
+    "定量泵系统", "真空泵", "细雾泵", "泡沫泵",
+    "Serum Bottle", "Cream Jar", "Dropper Bottle", "Refill System", "Dual Chamber",
+    "Cosmetic Packaging", "Mono-material", "PCR Packaging", "Sustainable Pkg",
+    "精华瓶", "膏霜罐", "替换包装", "单一材料", "化妆品包装",
+    "色母粒", "高分子材料", "材料兼容性", "PET", "PP", "PE", "PCR",
+    "Masterbatch", "Polymer", "Material Science",
+    "注塑制造", "Injection Molding", "模具开发", "自动化", "智能制造",
+    "Assembly", "Decoration", "Quality Control",
+    "CPK", "SPC", "AQL", "检测方法", "可靠性测试", "供应商审核",
+    "真空保持测试", "包装测试", "GMP", "ISO",
+    "ESG", "循环经济", "轻量化", "零填埋", "碳足迹", "Carbon Footprint",
+    "供应链", "出海", "品牌代工", "OEM", "ODM", "Private Label",
+    "Beauty Tech", "Clean Beauty", "Indie Brand"
+  ],
+  "updated": "2026-06-09",
+  "count": 82
+}
