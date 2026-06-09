@@ -20,7 +20,7 @@
 })();
 </script>
 
-<meta name="version" content="20260609v25">
+<meta name="version" content="20260609v26">
 <meta property="og:title" content="湖州工厂试产：与时间来一场赛跑">
 <meta property="og:description" content="南浔美集项目进入试产冲刺。设备调试、用工保障、政企协同全速推进。现场视频直击。">
 <meta property="og:url" content="https://coadyke.github.io/novora-site/articles/2026-06-09-huzhou-trial-production.html">
@@ -113,12 +113,14 @@
   .share-toast { position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:#0F2747; color:#fff; padding:10px 24px; border-radius:8px; font-size:14px; z-index:9999; opacity:0; transition:opacity .3s; pointer-events:none; white-space:nowrap; }
   .share-overlay { position:fixed; inset:0; background:rgba(15,39,71,0.7); z-index:9998; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .25s; }
   .share-overlay.show { opacity:1; pointer-events:auto; }
-  .share-guide { background:#fff; border-radius:16px; padding:32px 28px 24px; text-align:center; max-width:300px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.2); }
-  .share-guide .sg-icon { font-size:40px; margin-bottom:8px; }
-  .share-guide h3 { font-size:17px; font-weight:700; color:var(--bdf); margin:0 0 6px; }
-  .share-guide p { font-size:13px; color:var(--muted); margin:0 0 4px; line-height:1.6; }
-  .share-guide .sg-url { font-size:11px; color:var(--muted); background:#F4F6F9; padding:6px 10px; border-radius:6px; margin:12px 0; word-break:break-all; }
-  .share-guide .sg-close { margin-top:14px; font-size:13px; color:var(--accent); cursor:pointer; font-weight:500; background:none; border:none; }
+  .share-card { background:#fff; border-radius:12px; overflow:hidden; max-width:320px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.25); }
+  .share-card-img { width:100%; aspect-ratio:16/9; overflow:hidden; background:#0F2747; }
+  .share-card-img img { width:100%; height:100%; object-fit:cover; display:block; }
+  .share-card-body { padding:16px 18px 6px; }
+  .share-card-title { font-size:16px; font-weight:700; color:#1F2937; line-height:1.5; margin:0; }
+  .share-card-brand { padding:0 18px 8px; font-size:12px; color:#0F2747; font-weight:600; letter-spacing:1px; }
+  .share-card-tip { padding:10px 18px 16px; font-size:12px; color:#9CA3B8; text-align:center; border-top:1px solid #F3F4F6; margin:0; }
+  .share-card-close { display:block; width:100%; padding:12px; font-size:13px; color:#6B7280; background:#F9FAFB; border:none; border-top:1px solid #F3F4F6; cursor:pointer; font-weight:500; }
 </style>
 </head>
 <body>
@@ -193,23 +195,18 @@
 
 <div class="share-toast" id="share-toast">&#10003; 链接已复制</div>
 <div class="share-overlay" id="share-overlay" onclick="if(event.target===this)closeShareOverlay()">
-  <div class="share-guide">
-    <h3>分享至朋友圈</h3>
-    <p class="qr-sub">微信扫码即可阅读</p>
-    <img id="qr-img" src="" alt="QR Code" style="width:200px;height:200px;border-radius:8px;border:1px solid #E5E7EB;background:#fff;margin:12px 0;">
-    <p class="qr-tip" style="font-size:11px;color:#6B7280;">扫码后在微信内打开 → 点右上角 ··· → 分享到朋友圈</p>
-    <button class="sg-close" onclick="closeShareOverlay()">关闭</button>
+  <div class="share-card">
+    <div class="share-card-img">
+      <img src="/novora-site/og-image.png" alt="novora">
+    </div>
+    <div class="share-card-body">
+      <h3 class="share-card-title" id="share-card-title"></h3>
+    </div>
+    <div class="share-card-brand">novora</div>
+    <p class="share-card-tip">长按保存图片，分享到朋友圈</p>
+    <button class="share-card-close" onclick="closeShareOverlay()">关闭</button>
   </div>
-</div>
-    <h3>分享至朋友圈</h3>
-    <p>链接已自动复制</p>
-    <p>请点击右上角 <strong>⋯</strong> → <strong>分享到朋友圈</strong></p>
-    <div class="sg-url" id="sg-url"></div>
-    <button class="sg-close" onclick="closeShareOverlay()">关闭</button>
-  </div>
-</div>
-
-<script>
+</div><script>
 function copyLink(){
   navigator.clipboard.writeText(location.href).then(function(){
     var t=document.getElementById('share-toast');
@@ -222,9 +219,11 @@ function copyLink(){
 }
 function shareMoments(){
   var overlay = document.getElementById('share-overlay');
-  var img = document.getElementById('qr-img');
-  if (img) {
-    img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' + encodeURIComponent(location.href);
+  var titleEl = document.getElementById('share-card-title');
+  if (titleEl) {
+    var title = document.title;
+    var idx = title.lastIndexOf(' — ');
+    titleEl.textContent = idx > -1 ? title.substring(0, idx) : title;
   }
   overlay.classList.add('show');
 }
