@@ -4,7 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-<meta name="version" content="20260609v10">
+<script>
+(function(){
+  var meta = document.querySelector('meta[name="version"]');
+  if (!meta) return;
+  var localV = meta.content;
+  fetch('/novora-site/version.json?t=' + Date.now(), {cache:'no-store'})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d.version && d.version !== localV) {
+        location.reload(true);
+      }
+    })
+    .catch(function(){});
+})();
+</script>
+
+<meta name="version" content="20260609v11">
 <meta property="og:title" content="色母粒销售技巧与叙事体系">
 <meta property="og:description" content="11章完整弹药库：不卖色母粒，而是解决塑料企业的生产问题。">
 <meta property="og:url" content="https://coadyke.github.io/novora-site/articles/sales-skills.html">
