@@ -37,7 +37,7 @@
 })();
 </script>
 
-  <meta name="version" content="20260609v13">
+  <meta name="version" content="20260609v15">
 <meta property="og:title" content="一个配方，一年帮客户省了120万">
 <meta property="og:description" content="真实案例：添加量从4%优化到2.5%效果不变。色母粒不是越便宜越好。">
 <meta property="og:url" content="https://coadyke.github.io/novora-site/articles/roi-120wan.html">
@@ -97,4 +97,51 @@
 </script>
 
 
+<div class="share-toast" id="share-toast">&#10003; 链接已复制</div>
+<div class="share-overlay" id="share-overlay" onclick="if(event.target===this)closeShareOverlay()">
+  <div class="share-guide">
+    <div class="sg-icon">📤</div>
+    <h3>分享至朋友圈</h3>
+    <p>链接已自动复制</p>
+    <p>请点击右上角 <strong>⋯</strong> → <strong>分享到朋友圈</strong></p>
+    <div class="sg-url" id="sg-url"></div>
+    <button class="sg-close" onclick="closeShareOverlay()">关闭</button>
+  </div>
+</div>
+
+<script>
+function copyLink(){
+  navigator.clipboard.writeText(location.href).then(function(){
+    var t=document.getElementById('share-toast');
+    t.style.opacity='1'; setTimeout(function(){t.style.opacity='0';},2000);
+  }).catch(function(){
+    var t=document.getElementById('share-toast');
+    t.textContent='\u2717 \u590d\u5236\u5931\u8d25\uff0c\u8bf7\u624b\u52a8\u590d\u5236';
+    t.style.opacity='1'; setTimeout(function(){t.style.opacity='0';t.textContent='\u2713 \u94fe\u63a5\u5df2\u590d\u5236';},2000);
+  });
+}
+function shareMoments(){
+  if (navigator.share) {
+    navigator.share({title:document.title,url:location.href}).catch(function(){});
+    return;
+  }
+  navigator.clipboard.writeText(location.href).then(function(){
+    document.getElementById('sg-url').textContent=location.href;
+    document.getElementById('share-overlay').classList.add('show');
+  }).catch(function(){
+    document.getElementById('sg-url').textContent=location.href;
+    document.getElementById('share-overlay').classList.add('show');
+  });
+}
+function shareWechat(){
+  navigator.clipboard.writeText(location.href).then(function(){
+    var t=document.getElementById('share-toast');
+    t.textContent='\u2713 \u94fe\u63a5\u5df2\u590d\u5236\uff0c\u6253\u5f00\u5fae\u4fe1\u7c98\u8d34\u5373\u53ef\u5206\u4eab';
+    t.style.opacity='1'; setTimeout(function(){t.style.opacity='0';t.textContent='\u2713 \u94fe\u63a5\u5df2\u590d\u5236';},2500);
+  });
+}
+function closeShareOverlay(){
+  document.getElementById('share-overlay').classList.remove('show');
+}
+</script>
 </body></html>

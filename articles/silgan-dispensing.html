@@ -20,7 +20,7 @@
 })();
 </script>
 
-<meta name="version" content="20260609v13">
+<meta name="version" content="20260609v15">
 <meta property="og:title" content="Silgan Dispensing：全球分配系统巨头深度调研">
 <meta property="og:description" content="Silgan Dispensing产品矩阵、客户结构、竞争格局全面解析。">
 <meta property="og:url" content="https://coadyke.github.io/novora-site/articles/silgan-dispensing.html">
@@ -150,6 +150,16 @@
   .qr-modal img { width:200px; height:200px; border-radius:8px; border:1px solid #E5E7EB; }
   .qr-modal .qr-tip { font-size:11px; color:var(--muted); margin-top:12px; }
   .qr-modal .qr-close { margin-top:14px; font-size:13px; color:var(--accent); cursor:pointer; font-weight:500; background:none; border:none; }
+    /* Share toast & overlay */
+  .share-toast { position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:#0F2747; color:#fff; padding:10px 24px; border-radius:8px; font-size:14px; z-index:9999; opacity:0; transition:opacity .3s; pointer-events:none; white-space:nowrap; }
+  .share-overlay { position:fixed; inset:0; background:rgba(15,39,71,0.7); z-index:9998; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .25s; }
+  .share-overlay.show { opacity:1; pointer-events:auto; }
+  .share-guide { background:#fff; border-radius:16px; padding:32px 28px 24px; text-align:center; max-width:300px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.2); }
+  .share-guide .sg-icon { font-size:40px; margin-bottom:8px; }
+  .share-guide h3 { font-size:17px; font-weight:700; color:var(--bdf); margin:0 0 6px; }
+  .share-guide p { font-size:13px; color:var(--muted); margin:0 0 4px; line-height:1.6; }
+  .share-guide .sg-url { font-size:11px; color:var(--muted); background:#F4F6F9; padding:6px 10px; border-radius:6px; margin:12px 0; word-break:break-all; }
+  .share-guide .sg-close { margin-top:14px; font-size:13px; color:var(--accent); cursor:pointer; font-weight:500; background:none; border:none; }
   .like-count { font-variant-numeric:tabular-nums; }
 </style>
 
@@ -220,20 +230,60 @@
 </div>
 <div id="share-toast" style="position:fixed;bottom:40px;left:50%;transform:translateX(-50%);background:#0F2747;color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;">&#10004; 链接已复制</div>
 <script>
+,2000);
+  });
+}
+,2500);
+  });
+}
+</script>
+
+<div class="share-toast" id="share-toast">&#10003; 链接已复制</div>
+<div class="share-overlay" id="share-overlay" onclick="if(event.target===this)closeShareOverlay()">
+  <div class="share-guide">
+    <div class="sg-icon">📤</div>
+    <h3>分享至朋友圈</h3>
+    <p>链接已自动复制</p>
+    <p>请点击右上角 <strong>⋯</strong> → <strong>分享到朋友圈</strong></p>
+    <div class="sg-url" id="sg-url"></div>
+    <button class="sg-close" onclick="closeShareOverlay()">关闭</button>
+  </div>
+</div>
+
+<script>
 function copyLink(){
   navigator.clipboard.writeText(location.href).then(function(){
     var t=document.getElementById('share-toast');
     t.style.opacity='1'; setTimeout(function(){t.style.opacity='0';},2000);
+  }).catch(function(){
+    var t=document.getElementById('share-toast');
+    t.textContent='\u2717 \u590d\u5236\u5931\u8d25\uff0c\u8bf7\u624b\u52a8\u590d\u5236';
+    t.style.opacity='1'; setTimeout(function(){t.style.opacity='0';t.textContent='\u2713 \u94fe\u63a5\u5df2\u590d\u5236';},2000);
+  });
+}
+function shareMoments(){
+  if (navigator.share) {
+    navigator.share({title:document.title,url:location.href}).catch(function(){});
+    return;
+  }
+  navigator.clipboard.writeText(location.href).then(function(){
+    document.getElementById('sg-url').textContent=location.href;
+    document.getElementById('share-overlay').classList.add('show');
+  }).catch(function(){
+    document.getElementById('sg-url').textContent=location.href;
+    document.getElementById('share-overlay').classList.add('show');
   });
 }
 function shareWechat(){
   navigator.clipboard.writeText(location.href).then(function(){
     var t=document.getElementById('share-toast');
-    t.textContent='\u2705 \u94fe\u63a5\u5df2\u590d\u5236\uff0c\u6253\u5f00\u5fae\u4fe1\u7c98\u8d34\u5373\u53ef\u5206\u4eab';
-    t.style.opacity='1'; setTimeout(function(){t.style.opacity='0';t.textContent='\u2705 \u94fe\u63a5\u5df2\u590d\u5236';},2500);
+    t.textContent='\u2713 \u94fe\u63a5\u5df2\u590d\u5236\uff0c\u6253\u5f00\u5fae\u4fe1\u7c98\u8d34\u5373\u53ef\u5206\u4eab';
+    t.style.opacity='1'; setTimeout(function(){t.style.opacity='0';t.textContent='\u2713 \u94fe\u63a5\u5df2\u590d\u5236';},2500);
   });
 }
+function closeShareOverlay(){
+  document.getElementById('share-overlay').classList.remove('show');
+}
 </script>
-
 </body>
 </html>
