@@ -20,7 +20,7 @@
 })();
 </script>
 
-<meta name="version" content="20260609v12">
+<meta name="version" content="20260609v13">
 <meta property="og:title" content="Airless Pump 如何进行真空保持测试？">
 <meta property="og:description" content="高端品牌供应商审核必考项目。从三重密封到28天全周期检测，全面解析真空保持测试的方法论。">
 <meta property="og:url" content="https://coadyke.github.io/novora-site/articles/2026-06-08-airless-vacuum.html">
@@ -52,7 +52,12 @@
   /* -- Site Header -- */
   .site-hd { max-width:720px; margin:0 auto 6px; padding:0 4px; display:flex; align-items:baseline; gap:8px; }
   .site-hd .site-logo { font-size:18px; font-weight:700; color:var(--bdf); letter-spacing:-0.3px; white-space:nowrap; text-decoration:none; }
-  .site-hd .site-sub { font-size:10px; color:var(--muted); letter-spacing:0.2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1; min-width:0; }
+  .site-hd .site-sub { font-size:10px;
+  .logo-l { display: inline-block; }
+  @keyframes logo-nudge { 0% { transform: translateX(0); } 40% { transform: translateX(1px); } 100% { transform: translateX(0); } }
+  @keyframes logo-rebound { 0% { transform: translateX(0); } 35% { transform: translateX(1px); } 65% { transform: translateX(-0.5px); } 100% { transform: translateX(0); } }
+  .lnudge { animation: logo-nudge 0.2s ease-in-out; }
+  .lrebound { animation: logo-rebound 0.35s ease-in-out; } color:var(--muted); letter-spacing:0.2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1; min-width:0; }
 
 
   /* -- Hero -- */
@@ -90,7 +95,7 @@
 
 <!-- Site Header -->
 <div class="site-hd">
-  <a class="site-logo" href="/">novora</a>
+  <a class="site-logo" href="/"><span class="logo-l">n</span><span class="logo-l">o</span><span class="logo-l">v</span><span class="logo-l">o</span><span class="logo-l">r</span><span class="logo-l">a</span></a>
   <span class="site-sub">包装｜材料｜制造｜质量｜AI｜可持续发展｜洞察｜阅读</span>
 </div>
 
