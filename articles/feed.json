@@ -1,5 +1,15 @@
 [
   {
+    "title": "湖州工厂试产：与时间来一场赛跑",
+    "date": "2026-06-09",
+    "summary": "南浔美集项目进入试产冲刺。设备调试、用工保障、政企协同全速推进，从土建到交付的每一环都在与时间博弈。现场视频直击。",
+    "tags": [
+      "制造",
+      "洞察"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/2026-06-09-huzhou-trial-production.html"
+  },
+  {
     "title": "为什么你的CPK总在1.0以下？注塑车间被忽视的5个系统性偏差",
     "date": "2026-06-09",
     "summary": "客户审核CPK报告0.82不及格。真正问题不在设备不在模具——取样策略、测量系统、模腔差异、材料批次、参数漂移，五个系统性偏差逐层拆解。附两个真实车间诊断案例。",
@@ -47,15 +57,5 @@
       "阅读"
     ],
     "url": "https://coadyke.github.io/novora-site/articles/classics.html"
-  },
-  {
-    "title": "色母粒到底是什么？一分钟搞懂",
-    "date": "2026-06-07",
-    "summary": "从零开始的色母粒科普：为什么不用色粉直接染色？色母粒和色粉的本质区别是什么？",
-    "tags": [
-      "材料",
-      "制造"
-    ],
-    "url": "https://coadyke.github.io/novora-site/articles/what-is-masterbatch.html"
   }
 ]
