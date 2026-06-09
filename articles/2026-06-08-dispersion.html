@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-<meta name="version" content="20260609v6">
+<meta name="version" content="20260609v7">
 <meta property="og:title" content="色母粒的分散性：为什么它决定了你产品的成败">
 <meta property="og:description" content="因色母粒分散不良导致的质量问题占客诉60%以上。一文讲透分散性的四大关键因素。">
 <meta property="og:url" content="https://coadyke.github.io/novora-site/articles/2026-06-08-dispersion.html">
@@ -29,50 +29,48 @@
 
 <title>色母粒的分散性 — 为什么它决定了你产品的成败</title>
 <style>
-  :root { --bdf: #1A3F6E; --bdf-l: #2B5EA7; --bdf-pale: #EEF3F9; --gray-1: #E5E7EB; --gray-3: #9CA3AF; --gray-5: #374151; --white: #FFFFFF; --radius: 6px; }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; font-size: 18px; line-height: 2.0; color: var(--gray-5); background: #F7F9FC; -webkit-font-smoothing: antialiased; }
-  .container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
-  .art-header { background: linear-gradient(135deg, var(--bdf), var(--bdf-l)); color: white; padding: 48px 20px 40px; text-align: center; }
-  .art-header h1 { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
-  .art-header .meta { font-size: 15px; opacity: 0.6; }
-  .art-header .tags { margin-top: 14px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
-  .art-header .tags span { padding: 4px 14px; background: rgba(255,255,255,0.15); border-radius: 4px; font-size: 13px; }
-  .art-body { background: white; border-radius: var(--radius); padding: 40px 32px; margin: 32px auto; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
-  .art-body h2 { font-size: 24px; color: var(--bdf); margin: 36px 0 14px; padding-bottom: 10px; border-bottom: 2px solid var(--bdf-pale); }
-  .art-body h3 { font-size: 20px; color: var(--bdf-l); margin: 28px 0 12px; }
-  .art-body p { margin-bottom: 16px; }
-  .art-body ul, .art-body ol { padding-left: 24px; margin-bottom: 16px; }
-  .art-body li { margin-bottom: 8px; }
-  .callout { border-left: 4px solid var(--bdf-l); background: var(--bdf-pale); padding: 16px 20px; border-radius: 0 var(--radius) var(--radius) 0; margin: 20px 0; font-size: 17px; }
-  table { width: 100%; border-collapse: collapse; font-size: 16px; margin: 20px 0; }
-  th { background: var(--bdf-pale); color: var(--bdf); padding: 10px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--bdf); }
-  td { padding: 10px 12px; border-bottom: 1px solid var(--gray-1); }
-  .art-footer { text-align: center; padding: 32px 20px 48px; color: var(--gray-3); font-size: 15px; }
-  .art-footer a { color: var(--bdf-l); text-decoration: none; }
-  @media (max-width: 600px) {
-    body { font-size: 17px; }
-    .art-body { padding: 24px 18px; }
-    .art-header h1 { font-size: 24px; }
+  :root { --bdf: #0F2747; --bdf-l: #1A3F6E; --bdf-pale: #EEF3F9; --text: #1F2937; --muted: #6B7280; --bg: #F7F7F7; --card: #FFFFFF; --gray-1: #E5E7EB; --gray-3: #9CA3B8; }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; font-size:17px; line-height:1.85; color:var(--text); background:var(--bg); padding:0; -webkit-font-smoothing:antialiased; }
+
+  /* -- Fixed Header -- */
+  .article-header { position:fixed; top:0; left:0; right:0; z-index:999; height:48px; padding:0 16px; background:rgba(255,255,255,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid rgba(0,0,0,0.06); display:flex; align-items:center; justify-content:space-between; }
+  .article-header .hdr-logo { font-size:15px; font-weight:700; color:var(--bdf); text-decoration:none; letter-spacing:-0.2px; }
+  .article-header .hdr-share { display:inline-flex; align-items:center; gap:4px; font-size:13px; font-weight:500; color:var(--bdf); background:none; border:1px solid rgba(0,0,0,0.12); border-radius:6px; padding:5px 12px; cursor:pointer; transition:all .15s; }
+  .article-header .hdr-share:hover { background:#F4F6F9; }
+  .hdr-share svg { width:15px; height:15px; }
+
+  /* -- Hero -- */
+  .article-hero { padding:28px 20px 12px; text-align:center; }
+  .article-hero .tag-row { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; justify-content:center; }
+  .article-hero .tag { font-size:11px; padding:2px 8px; background:var(--bdf-pale); color:var(--bdf); border-radius:4px; font-weight:500; }
+  .article-hero h1 { font-size:24px; font-weight:700; color:var(--bdf); line-height:1.35; margin:0 0 4px; letter-spacing:-0.3px; }
+  .article-hero .meta { font-size:12px; color:var(--muted); }
+  .article-hero .share-bar-top { display:flex; gap:5px; justify-content:center; flex-wrap:wrap; margin-top:10px; }
+  .share-btn-top { display:inline-flex; align-items:center; gap:4px; font-size:12px; font-weight:500; color:var(--muted); background:#fff; border:1px solid var(--gray-1); border-radius:6px; padding:5px 12px; cursor:pointer; transition:all .15s; }
+  .share-btn-top:hover { border-color:#BFCAD8; color:var(--bdf); }
+
+  .ctr { max-width:720px; margin:0 auto; }
+  .art-body { background:var(--card); border-radius:16px; padding:20px 24px; border:1px solid rgba(0,0,0,0.04); }
+  .art-body h2 { font-size:20px; font-weight:700; color:var(--bdf); margin:20px 0 8px; padding-bottom:8px; border-bottom:1px solid var(--gray-1); }
+  .art-body h3 { font-size:17px; font-weight:600; color:var(--bdf-l); margin:14px 0 4px; }
+  .art-body p { margin-bottom:14px; }
+  .art-body ul, .art-body ol { padding-left:22px; margin-bottom:16px; }
+  .art-body li { margin-bottom:6px; }
+  .callout { border-left:3px solid var(--bdf-l); background:var(--bdf-pale); padding:14px 18px; border-radius:0 8px 8px 0; margin:18px 0; font-size:15px; }
+  .art-foot { text-align:center; padding:24px 0 36px; color:var(--muted); font-size:14px; }
+  .art-foot a { color:var(--bdf); text-decoration:none; }
+  .video-embed { border-radius:12px; overflow:hidden; margin:20px 0; border:1px solid var(--gray-1); }
+  .video-embed video { width:100%; display:block; }
+
+  @media (max-width:600px) {
+    .article-header { height:44px; padding:0 14px; }
+    .article-header .hdr-logo { font-size:14px; }
+    .article-hero { padding:22px 14px 8px; }
+    .article-hero h1 { font-size:20px; }
+    .art-body { padding:18px 14px; font-size:16px; }
+    .art-body h2 { font-size:18px; }
   }
-
-  .like-section { text-align:center; padding:32px 0 16px; border-top:1px solid var(--gray-1); margin-top:32px; }
-  .like-btn { display:inline-flex; align-items:center; gap:6px; font-size:15px; font-weight:500; color:var(--muted); background:none; border:1px solid var(--gray-1); border-radius:999px; padding:8px 20px; cursor:pointer; transition:all .2s; user-select:none; }
-  .like-btn:hover { border-color:#E57373; color:#E57373; }
-  .like-btn.liked { color:#E53935; border-color:#EF9A9A; background:#FFF5F5; animation:like-pop .3s ease; }
-  .like-btn .heart { font-size:18px; transition:transform .3s; }
-  .like-btn.liked .heart { transform:scale(1.3); }
-  @keyframes like-pop { 0%{transform:scale(1)} 50%{transform:scale(1.1)} 100%{transform:scale(1)} }
-
-  /* QR Modal */
-  .qr-overlay { position:fixed; inset:0; background:rgba(15,39,71,0.6); z-index:9998; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .25s; }
-  .qr-overlay.show { opacity:1; pointer-events:auto; }
-  .qr-modal { background:#fff; border-radius:16px; padding:28px; text-align:center; max-width:320px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.2); }
-  .qr-modal h3 { font-size:16px; color:var(--bdf); margin:0 0 4px; font-weight:700; }
-  .qr-modal .qr-sub { font-size:12px; color:var(--muted); margin-bottom:16px; }
-  .qr-modal img { width:200px; height:200px; border-radius:8px; border:1px solid #E5E7EB; }
-  .qr-modal .qr-tip { font-size:11px; color:var(--muted); margin-top:12px; }
-  .qr-modal .qr-close { margin-top:14px; font-size:13px; color:var(--accent); cursor:pointer; font-weight:500; background:none; border:none; }
   .like-count { font-variant-numeric:tabular-nums; }
 </style>
 
