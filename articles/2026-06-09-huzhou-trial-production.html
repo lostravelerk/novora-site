@@ -9,18 +9,24 @@
   var meta = document.querySelector('meta[name="version"]');
   if (!meta) return;
   var localV = meta.content;
+  var retries = parseInt(sessionStorage.getItem('nv_ver_retry')||'0');
+  if (retries > 3) { sessionStorage.removeItem('nv_ver_retry'); return; }
   fetch('/novora-site/version.json?t=' + Date.now(), {cache:'no-store'})
     .then(function(r){ return r.json(); })
     .then(function(d){
       if (d.version && d.version !== localV) {
-        location.replace(location.href.split('?')[0] + '?v=' + d.version);
+        sessionStorage.setItem('nv_ver_retry', String(retries + 1));
+        var u = location.href.split('?')[0] + '?v=' + d.version + '&t=' + Date.now();
+        location.replace(u);
+      } else {
+        sessionStorage.removeItem('nv_ver_retry');
       }
     })
     .catch(function(){});
 })();
 </script>
 
-<meta name="version" content="20260610v35">
+<meta name="version" content="20260610v36">
 <meta property="og:title" content="湖州工厂试产：与时间来一场赛跑">
 <meta property="og:description" content="南浔美集项目进入试产冲刺。设备调试、用工保障、政企协同全速推进。现场视频直击。">
 <meta property="og:url" content="https://coadyke.github.io/novora-site/articles/2026-06-09-huzhou-trial-production.html">

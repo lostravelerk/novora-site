@@ -9,18 +9,24 @@
   var meta = document.querySelector('meta[name="version"]');
   if (!meta) return;
   var localV = meta.content;
+  var retries = parseInt(sessionStorage.getItem('nv_ver_retry')||'0');
+  if (retries > 3) { sessionStorage.removeItem('nv_ver_retry'); return; }
   fetch('/novora-site/version.json?t=' + Date.now(), {cache:'no-store'})
     .then(function(r){ return r.json(); })
     .then(function(d){
       if (d.version && d.version !== localV) {
-        location.replace(location.href.split('?')[0] + '?v=' + d.version);
+        sessionStorage.setItem('nv_ver_retry', String(retries + 1));
+        var u = location.href.split('?')[0] + '?v=' + d.version + '&t=' + Date.now();
+        location.replace(u);
+      } else {
+        sessionStorage.removeItem('nv_ver_retry');
       }
     })
     .catch(function(){});
 })();
 </script>
 
-<meta name="version" content="20260610v35">
+<meta name="version" content="20260610v36">
 <meta property="og:title" content="Silgan Dispensing：全球分配系统巨头深度调研">
 <meta property="og:description" content="Silgan Dispensing产品矩阵、市场策略与2023年重组后的三大事业部架构深度分析。">
 <meta property="og:url" content="https://coadyke.github.io/novora-site/articles/silgan-dispensing.html">

@@ -9,18 +9,24 @@
   var meta = document.querySelector('meta[name="version"]');
   if (!meta) return;
   var localV = meta.content;
+  var retries = parseInt(sessionStorage.getItem('nv_ver_retry')||'0');
+  if (retries > 3) { sessionStorage.removeItem('nv_ver_retry'); return; }
   fetch('/novora-site/version.json?t=' + Date.now(), {cache:'no-store'})
     .then(function(r){ return r.json(); })
     .then(function(d){
       if (d.version && d.version !== localV) {
-        location.replace(location.href.split('?')[0] + '?v=' + d.version);
+        sessionStorage.setItem('nv_ver_retry', String(retries + 1));
+        var u = location.href.split('?')[0] + '?v=' + d.version + '&t=' + Date.now();
+        location.replace(u);
+      } else {
+        sessionStorage.removeItem('nv_ver_retry');
       }
     })
     .catch(function(){});
 })();
 </script>
 
-<meta name="version" content="20260610v35">
+<meta name="version" content="20260610v36">
 <meta property="og:title" content="为什么你的CPK总在1.0以下？注塑车间被忽视的5个系统性偏差">
 <meta property="og:description" content="CPK低于1.0不只是设备问题。从模具温度波动到材料批次差异，揭示注塑车间5个被忽视的系统性偏差及改进方案。">
 <meta property="og:url" content="https://coadyke.github.io/novora-site/articles/2026-06-09-cpk-injection.html">
