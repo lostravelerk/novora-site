@@ -20,7 +20,7 @@
 })();
 </script>
 
-<meta name="version" content="20260609v28">
+<meta name="version" content="20260609v29">
 <meta property="og:title" content="湖州工厂试产：与时间来一场赛跑">
 <meta property="og:description" content="南浔美集项目进入试产冲刺。设备调试、用工保障、政企协同全速推进。现场视频直击。">
 <meta property="og:url" content="https://coadyke.github.io/novora-site/articles/2026-06-09-huzhou-trial-production.html">
@@ -838,23 +838,24 @@ function shareMoments(){
   var title = document.title;
   var idx = title.lastIndexOf(' — ');
   var cleanTitle = idx > -1 ? title.substring(0, idx) : title;
-  // Always show panel on desktop; on mobile, try native share first
-  if (/Mobi|Android|iPhone/i.test(navigator.userAgent) && navigator.share) {
-    navigator.share({ title: cleanTitle, url: location.href }).then(function(){
-      // Shared successfully
-    }).catch(function(e){
-      // User cancelled or share failed, show panel
+  if (navigator.share) {
+    navigator.share({ title: cleanTitle, url: location.href }).catch(function(){
       showSharePanel(cleanTitle);
     });
     return;
   }
-  // Desktop or no native share: show panel
   showSharePanel(cleanTitle);
 }
 function shareWechat(){
   var title = document.title;
   var idx = title.lastIndexOf(' — ');
   var cleanTitle = idx > -1 ? title.substring(0, idx) : title;
+  if (navigator.share) {
+    navigator.share({ title: cleanTitle, url: location.href }).catch(function(){
+      showSharePanel(cleanTitle);
+    });
+    return;
+  }
   showSharePanel(cleanTitle);
 }
 function showSharePanel(cleanTitle){
