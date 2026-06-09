@@ -188,7 +188,7 @@
 
 
 <div class="art-foot">
-  <a href="https://novora.cc">&larr; 返回 novora 首页</a>
+  <a href="https://novora.cc">&larr; 返回 novora 首页</a><span style="font-size:10px;color:#cbd5e1;margin-left:12px;">v29</span>
 </div>
 
 </div><!-- .ctr/art-body -->
@@ -219,10 +219,12 @@ function shareMoments(){
   var idx = title.lastIndexOf(' — ');
   var cleanTitle = idx > -1 ? title.substring(0, idx) : title;
   if (navigator.share) {
-    navigator.share({ title: cleanTitle, url: location.href }).catch(function(){
-      showSharePanel(cleanTitle);
-    });
-    return;
+    try {
+      navigator.share({ title: cleanTitle, url: location.href }).catch(function(){
+        showSharePanel(cleanTitle);
+      });
+      return;
+    } catch(e) { showSharePanel(cleanTitle); return; }
   }
   showSharePanel(cleanTitle);
 }
@@ -231,10 +233,12 @@ function shareWechat(){
   var idx = title.lastIndexOf(' — ');
   var cleanTitle = idx > -1 ? title.substring(0, idx) : title;
   if (navigator.share) {
-    navigator.share({ title: cleanTitle, url: location.href }).catch(function(){
-      showSharePanel(cleanTitle);
-    });
-    return;
+    try {
+      navigator.share({ title: cleanTitle, url: location.href }).catch(function(){
+        showSharePanel(cleanTitle);
+      });
+      return;
+    } catch(e) { showSharePanel(cleanTitle); return; }
   }
   showSharePanel(cleanTitle);
 }
