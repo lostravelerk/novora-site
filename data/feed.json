@@ -4,9 +4,19 @@
     "url": "https://coadyke.github.io/novora-site/",
     "description": "包装与制造产业知识库。聚焦包装、材料、制造、质量、可持续发展与AI应用。",
     "language": "zh-CN",
-    "updated": "2026-06-10T07:00:00+08:00"
+    "updated": "2026-06-11T07:00:00+08:00"
   },
   "articles": [
+    {
+      "title": "CPK大于1.33就放心了？你可能被测量系统骗了——Gage R&R 完全指南",
+      "date": "2026-06-11",
+      "summary": "过程能力达标不等于质量过关。测量误差可能比过程变异更大。从%GR&R到ndc到ANOVA方法，注塑车间实施Gage R&R的完整方法论与避坑指南。两个真实案例诊断。",
+      "tags": ["质量","制造"],
+      "topics": ["MSA","Gage R&R","质量管理"],
+      "slug": "gage-rr",
+      "url": "https://coadyke.github.io/novora-site/articles/2026-06-11-gage-rr.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
     {
       "title": "注塑车间为什么越来越依赖自动化？从三班倒到无人值守的演进逻辑",
       "date": "2026-06-10",
