@@ -21,6 +21,17 @@
     "url": "https://coadyke.github.io/novora-site/articles/2026-06-12-ai-agent-manufacturing.html"
   },
   {
+    "title": "责任的边界",
+    "date": "2026-06-12",
+    "summary": "从心理所有权到系统责任：一种高阶管理者人格结构研究。12,000字深度思想论文，揭示优秀者悖论与偏差吸引效应。",
+    "tags": [
+      "思想论文",
+      "管理",
+      "领导力"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/2026-06-12-responsibility-boundary.html"
+  },
+  {
     "title": "CPK大于1.33就放心了？你可能被测量系统骗了——Gage R&amp;R 完全指南",
     "date": "2026-06-11",
     "summary": "过程能力达标不等于质量过关。测量误差可能比过程变异更大。从%GR&amp;R到ndc到ANOVA方法，注塑车间实施Gage R&amp;R的完整方法论与避坑指南。",
@@ -41,16 +52,6 @@
     "url": "https://coadyke.github.io/novora-site/articles/2026-06-10-injection-molding-automation.html"
   },
   {
-    "title": "湖州工厂试产：与时间来一场赛跑",
-    "date": "2026-06-09",
-    "summary": "南浔美集项目进入试产冲刺。设备调试、用工保障、政企协同全速推进。现场视频直击。",
-    "tags": [
-      "现场直击",
-      "工厂建设"
-    ],
-    "url": "https://coadyke.github.io/novora-site/articles/2026-06-09-huzhou-trial-production.html"
-  },
-  {
     "title": "为什么你的CPK总在1.0以下？注塑车间被忽视的5个系统性偏差",
     "date": "2026-06-09",
     "summary": "CPK低于1.0不只是设备问题。从模具温度波动到材料批次差异，揭示注塑车间5个被忽视的系统性偏差及改进方案。",
@@ -59,6 +60,16 @@
       "质量管理"
     ],
     "url": "https://coadyke.github.io/novora-site/articles/2026-06-09-cpk-injection.html"
+  },
+  {
+    "title": "湖州工厂试产：与时间来一场赛跑",
+    "date": "2026-06-09",
+    "summary": "南浔美集项目进入试产冲刺。设备调试、用工保障、政企协同全速推进。现场视频直击。",
+    "tags": [
+      "现场直击",
+      "工厂建设"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/2026-06-09-huzhou-trial-production.html"
   },
   {
     "title": "Airless Pump 如何进行真空保持测试？",
@@ -80,6 +91,25 @@
     "url": "https://coadyke.github.io/novora-site/articles/2026-06-08-dispersion.html"
   },
   {
+    "title": "为什么低价色母粒最后反而更贵？",
+    "date": "2026-06-07",
+    "summary": "三组算账对比：便宜色母粒VS高品质色母粒——真正的省钱是什么？",
+    "tags": [
+      "现场直击",
+      "工厂建设"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/cheap-masterbatch.html"
+  },
+  {
+    "title": "世界文学名著典藏",
+    "date": "2026-06-07",
+    "summary": "二百八十部不朽经典——从荷马史诗到村上春树，完整的中文阅读与原文下载指南。",
+    "tags": [
+      "洞察"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/classics.html"
+  },
+  {
     "title": "一个配方，一年帮客户省了120万",
     "date": "2026-06-07",
     "summary": "真实案例：添加量从4%优化到2.5%效果不变。色母粒不是越便宜越好。",
@@ -90,13 +120,13 @@
     "url": "https://coadyke.github.io/novora-site/articles/roi-120wan.html"
   },
   {
-    "title": "世界文学名著典藏",
+    "title": "色母粒销售技巧与叙事体系",
     "date": "2026-06-07",
-    "summary": "二百八十部不朽经典——从荷马史诗到村上春树，完整的中文阅读与原文下载指南。",
+    "summary": "色母粒销售不只是卖产品——从技术顾问到解决方案，构建专业销售叙事体系与客户沟通框架。",
     "tags": [
-      "洞察"
+      "持续更新"
     ],
-    "url": "https://coadyke.github.io/novora-site/articles/classics.html"
+    "url": "https://coadyke.github.io/novora-site/articles/sales-skills.html"
   },
   {
     "title": "色母粒到底是什么？一分钟搞懂",
@@ -109,15 +139,6 @@
     "url": "https://coadyke.github.io/novora-site/articles/what-is-masterbatch.html"
   },
   {
-    "title": "色母粒销售技巧与叙事体系",
-    "date": "2026-06-07",
-    "summary": "色母粒销售不只是卖产品——从技术顾问到解决方案，构建专业销售叙事体系与客户沟通框架。",
-    "tags": [
-      "持续更新"
-    ],
-    "url": "https://coadyke.github.io/novora-site/articles/sales-skills.html"
-  },
-  {
     "title": "瓶子发黄怎么办？塑料厂急诊室",
     "date": "2026-06-07",
     "summary": "PET瓶发黄、注塑件黑点、吹塑件破裂——完整诊断框架与解决方案。",
@@ -126,16 +147,6 @@
       "工厂建设"
     ],
     "url": "https://coadyke.github.io/novora-site/articles/yellow-bottles.html"
-  },
-  {
-    "title": "为什么低价色母粒最后反而更贵？",
-    "date": "2026-06-07",
-    "summary": "三组算账对比：便宜色母粒VS高品质色母粒——真正的省钱是什么？",
-    "tags": [
-      "现场直击",
-      "工厂建设"
-    ],
-    "url": "https://coadyke.github.io/novora-site/articles/cheap-masterbatch.html"
   },
   {
     "title": "10万只瓶子报废，只因为这个颜色差了0.5%",
