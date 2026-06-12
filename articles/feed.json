@@ -1,61 +1,160 @@
 [
   {
+    "title": "韩国ODM凭什么统治了全球美妆供应链？——COSMAX与Kolmar商业模式深度拆解",
+    "date": "2026-06-13",
+    "summary": "从1990年代小作坊到全球美妆ODM寡头，COSMAX和Kolmar Korea如何用'研发即制造'模式改写了品牌与供应链的权力关系。对中国包材/制造企业的三条启示。",
+    "tags": [
+      "洞察",
+      "商业模式"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/2026-06-13-korean-odm.html"
+  },
+  {
+    "title": "工厂里来了AI Agent，但它不是来替代你的",
+    "date": "2026-06-12",
+    "summary": "从RPA到自主决策的三代演进，Agent四层架构拆解，注塑/电子/SMT三个真实落地场景，以及制造业AI项目最致命的三个陷阱。",
+    "tags": [
+      "AI",
+      "智能制造",
+      "AI Agent"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/2026-06-12-ai-agent-manufacturing.html"
+  },
+  {
+    "title": "CPK大于1.33就放心了？你可能被测量系统骗了——Gage R&amp;R 完全指南",
+    "date": "2026-06-11",
+    "summary": "过程能力达标不等于质量过关。测量误差可能比过程变异更大。从%GR&amp;R到ndc到ANOVA方法，注塑车间实施Gage R&amp;R的完整方法论与避坑指南。",
+    "tags": [
+      "质量管理",
+      "测量系统分析"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/2026-06-11-gage-rr.html"
+  },
+  {
+    "title": "注塑车间为什么越来越依赖自动化？从三班倒到无人值守的演进逻辑",
+    "date": "2026-06-10",
+    "summary": "注塑自动化不只关乎成本。从机械手到MES到AI视觉，深度分析注塑工厂自动化的五阶段演进路径、关键投资决策框架与实施陷阱。",
+    "tags": [
+      "深度研究",
+      "注塑自动化"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/2026-06-10-injection-molding-automation.html"
+  },
+  {
     "title": "湖州工厂试产：与时间来一场赛跑",
     "date": "2026-06-09",
-    "summary": "南浔美集项目进入试产冲刺。设备调试、用工保障、政企协同全速推进，从土建到交付的每一环都在与时间博弈。现场视频直击。",
+    "summary": "南浔美集项目进入试产冲刺。设备调试、用工保障、政企协同全速推进。现场视频直击。",
     "tags": [
-      "制造",
-      "洞察"
+      "现场直击",
+      "工厂建设"
     ],
     "url": "https://coadyke.github.io/novora-site/articles/2026-06-09-huzhou-trial-production.html"
   },
   {
     "title": "为什么你的CPK总在1.0以下？注塑车间被忽视的5个系统性偏差",
     "date": "2026-06-09",
-    "summary": "客户审核CPK报告0.82不及格。真正问题不在设备不在模具——取样策略、测量系统、模腔差异、材料批次、参数漂移，五个系统性偏差逐层拆解。附两个真实车间诊断案例。",
+    "summary": "CPK低于1.0不只是设备问题。从模具温度波动到材料批次差异，揭示注塑车间5个被忽视的系统性偏差及改进方案。",
     "tags": [
-      "质量",
-      "制造"
+      "产业深度解析",
+      "质量管理"
     ],
     "url": "https://coadyke.github.io/novora-site/articles/2026-06-09-cpk-injection.html"
   },
   {
     "title": "Airless Pump 如何进行真空保持测试？",
     "date": "2026-06-08",
-    "summary": "高端品牌供应商审核必考项目。从三重密封到28天全周期检测，从负压挑战到温差循环，全面解析真空保持测试的方法论与判定标准。",
+    "summary": "Airless真空泵的密封性与真空保持能力直接决定产品保质期。本文详解真空衰减测试方法、关键参数与判定标准。",
     "tags": [
-      "包装",
-      "制造",
-      "质量"
+      "产业深度解析",
+      "包装技术"
     ],
     "url": "https://coadyke.github.io/novora-site/articles/2026-06-08-airless-vacuum.html"
   },
   {
     "title": "色母粒的分散性：为什么它决定了你产品的成败",
     "date": "2026-06-08",
-    "summary": "因色母粒分散不良导致的质量问题占客诉60%以上。从颜料选择到分散剂配方到加工工艺，一文讲透分散性的四大关键因素。",
+    "summary": "色母粒分散性不足会导致产品表面瑕疵、力学性能下降甚至客户退货。从颜料选择到加工工艺，完整解析分散性控制要点。",
     "tags": [
-      "材料",
-      "制造"
+      "色母粒行业知识"
     ],
     "url": "https://coadyke.github.io/novora-site/articles/2026-06-08-dispersion.html"
   },
   {
+    "title": "一个配方，一年帮客户省了120万",
+    "date": "2026-06-07",
+    "summary": "真实案例：添加量从4%优化到2.5%效果不变。色母粒不是越便宜越好。",
+    "tags": [
+      "现场直击",
+      "工厂建设"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/roi-120wan.html"
+  },
+  {
+    "title": "世界文学名著典藏",
+    "date": "2026-06-07",
+    "summary": "二百八十部不朽经典——从荷马史诗到村上春树，完整的中文阅读与原文下载指南。",
+    "tags": [
+      "洞察"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/classics.html"
+  },
+  {
+    "title": "色母粒到底是什么？一分钟搞懂",
+    "date": "2026-06-07",
+    "summary": "从零开始的色母粒科普：为什么不用色粉直接染色？",
+    "tags": [
+      "现场直击",
+      "工厂建设"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/what-is-masterbatch.html"
+  },
+  {
     "title": "色母粒销售技巧与叙事体系",
     "date": "2026-06-07",
-    "summary": "11章完整弹药库：核心叙事框架、12个痛点切入点、10个场景化故事、30个异议处理、6种客户策略、12个价格谈判技巧。",
+    "summary": "色母粒销售不只是卖产品——从技术顾问到解决方案，构建专业销售叙事体系与客户沟通框架。",
     "tags": [
-      "材料"
+      "持续更新"
     ],
     "url": "https://coadyke.github.io/novora-site/articles/sales-skills.html"
   },
   {
-    "title": "世界文学名著典藏 · 280部导读",
+    "title": "瓶子发黄怎么办？塑料厂急诊室",
     "date": "2026-06-07",
-    "summary": "17卷分卷：从古希腊荷马史诗到现代经典，涵盖英国、法国、俄国、德国、意大利、拉美、亚洲等全球文学。",
+    "summary": "PET瓶发黄、注塑件黑点、吹塑件破裂——完整诊断框架与解决方案。",
     "tags": [
-      "阅读"
+      "现场直击",
+      "工厂建设"
     ],
-    "url": "https://coadyke.github.io/novora-site/articles/classics.html"
+    "url": "https://coadyke.github.io/novora-site/articles/yellow-bottles.html"
+  },
+  {
+    "title": "为什么低价色母粒最后反而更贵？",
+    "date": "2026-06-07",
+    "summary": "三组算账对比：便宜色母粒VS高品质色母粒——真正的省钱是什么？",
+    "tags": [
+      "现场直击",
+      "工厂建设"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/cheap-masterbatch.html"
+  },
+  {
+    "title": "10万只瓶子报废，只因为这个颜色差了0.5%",
+    "date": "2026-06-05",
+    "summary": "不同材料、不同供应商、不同工艺的瓶胚成本差异有多大？",
+    "tags": [
+      "现场直击",
+      "工厂建设"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/bottles-100k.html"
+  },
+  {
+    "title": "Silgan Dispensing：全球分配系统巨头深度调研",
+    "date": "2026-06-05",
+    "summary": "14页深度报告：从母集团架构到中国市场深耕，完整覆盖Silgan Dispensing业务版图、财务表现与竞争护城河。",
+    "tags": [
+      "深度研究",
+      "包装产业"
+    ],
+    "url": "https://coadyke.github.io/novora-site/articles/silgan-dispensing.html"
   }
 ]
