@@ -1,5 +1,14 @@
 # novora.cc 每日文章更新 · 执行记录
 
+## 2026-06-13 — 已存在（版本同步 + feed补全）
+- 文章：`articles/2026-06-13-korean-odm.html`（已存在）
+- 标题：韩国ODM凭什么统治了全球美妆供应链？——COSMAX与Kolmar商业模式深度拆解
+- 标签：洞察、制造
+- 栏目：周六 → 洞察 Insights
+- 内容：韩国ODM崛起(1990s→) + R&BD模式拆解 + COSMAX vs Kolmar对比 + 中国包材企业启示
+- 操作：版本号全站同步 v43→v46 (version.txt/index.html/文章meta) + feed.json补全6/12和6/13元数据
+- 推送：89be7a0 → origin/main
+
 ## 2026-06-11 — 已发布（补充 feed.json）
 - 文章：`articles/2026-06-11-gage-rr.html`（已存在，本次补全 feed.json）
 - 标题：CPK大于1.33就放心了？你可能被测量系统骗了——Gage R&R 完全指南
