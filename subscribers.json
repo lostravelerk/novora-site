@@ -1,5 +1,11 @@
 {
   "comment": "novora 订阅者列表 — 新增订阅者在此添加邮箱",
   "subscribers": [
+    {
+      "name": "testing",
+      "email": "caody@live.com",
+      "message": "this is a testing",
+      "subscribed": "2026-06-14"
+    }
   ]
 }
