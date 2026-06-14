@@ -4,9 +4,19 @@
     "url": "https://coadyke.github.io/novora-site/",
     "description": "包装与制造产业知识库。聚焦包装、材料、制造、质量、可持续发展与AI应用。",
     "language": "zh-CN",
-    "updated": "2026-06-14T07:00:00+08:00"
+    "updated": "2026-06-15T06:55:00+08:00"
   },
   "articles": [
+    {
+      "title": "替换装不是换个内芯那么简单——化妆品替换包装的工程挑战与设计哲学",
+      "date": "2026-06-15",
+      "summary": "90%的替换包装项目卡在同一个地方：密封。从三重密封策略到卡扣疲劳寿命到用户体验的隐性工程，系统拆解替换包装中最容易被低估的五个技术问题。附三种技术路线决策框架。",
+      "tags": ["包装","可持续发展"],
+      "topics": ["替换包装","密封设计","卡扣工程"],
+      "slug": "refill-packaging",
+      "url": "https://coadyke.github.io/novora-site/articles/2026-06-15-refill-packaging.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
     {
       "title": "你以为的创新，其实都是旧技术的重新组合——《技术的本质》如何重塑制造者的世界观",
       "date": "2026-06-14",
@@ -35,6 +45,16 @@
       "topics": ["AI Agent","智能制造","知识系统"],
       "slug": "ai-agent-manufacturing",
       "url": "https://coadyke.github.io/novora-site/articles/2026-06-12-ai-agent-manufacturing.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
+    {
+      "title": "责任的边界：为什么卓越管理者最终必须学会放弃「正确」",
+      "date": "2026-06-12",
+      "summary": "从心理所有权到系统责任：一种高阶管理者人格结构研究。12,000字深度思想论文，揭示优秀者悖论与偏差吸引效应。",
+      "tags": ["洞察"],
+      "topics": ["管理","领导力","责任边界"],
+      "slug": "responsibility-boundary",
+      "url": "https://coadyke.github.io/novora-site/articles/2026-06-12-responsibility-boundary.html",
       "image": "https://coadyke.github.io/novora-site/og-image.png"
     },
     {
