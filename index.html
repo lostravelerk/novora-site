@@ -34,7 +34,7 @@
 })();
 </script>
 
-<meta name="version" content="20260615v51">
+<meta name="version" content="20260615v52">
 <meta property="og:title" content="novora — 探索制造与创新的边界">
 <meta property="og:description" content="包装与制造产业知识库。聚焦包装、材料、制造、质量、可持续发展与AI应用。">
 <meta property="og:url" content="https://coadyke.github.io/novora-site/">
@@ -111,6 +111,21 @@
     transition: color 0.15s;
   }
   .megee-inline:hover { color: var(--accent); }
+  .megee-material-gate {
+    width: 19px; height: 19px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-left: 2px; flex-shrink: 0;
+    background: linear-gradient(180deg, #E8F7ED 0%, #FFFFFF 100%);
+    border: 1px solid #D6E8DD; color: #3E8F5F;
+    text-decoration: none; font-size: 10px; font-weight: 700;
+    line-height: 1; letter-spacing: -0.3px;
+    box-shadow: inset 0 -5px 0 rgba(62,143,95,0.10);
+    transition: transform 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .megee-material-gate:hover {
+    transform: translateY(-1px);
+    border-color: #8CC5A3; color: #1F6E43;
+  }
   .cat-row {
     display: flex; align-items: center; justify-content: space-between;
     margin-top: 7px;
@@ -267,7 +282,7 @@
     { title: "Silgan Dispensing 深度调研报告", date: "2026-05-16", summary: "西尔格分配系统全球最完整深度分析。14页覆盖：集团架构、中国市场28年深耕、5笔重大收购、核心技术平台。", tags: ["包装","制造"], topics: ["化妆品包装","定量泵系统"], file: "articles/silgan-dispensing.html" }
   ];
 
-  document.getElementById('site-stats').innerHTML = articles.length + '篇<span class="sep">·</span>8栏目<span class="sep">·</span><span id="busuanzi_container_site_uv" style="display:inline;">No.<span id="busuanzi_value_site_uv"></span></span><span class="sep">·</span> <span id="megee-wink" style="display:inline-block">↗</span> <a href="https://megee.design" class="megee-inline" target="_blank" rel="noopener">megee⁺, packaging and more.</a>';
+  document.getElementById('site-stats').innerHTML = articles.length + '篇<span class="sep">·</span>8栏目<span class="sep">·</span><span id="busuanzi_container_site_uv" style="display:inline;">No.<span id="busuanzi_value_site_uv"></span></span><span class="sep">·</span> <span id="megee-wink" style="display:inline-block">↗</span> <a href="https://megee.design" class="megee-inline" target="_blank" rel="noopener">megee⁺, packaging and more.</a><a href="https://coadyke.github.io/megee-material-site/" class="megee-material-gate" target="_blank" rel="noopener" aria-label="美集材料系统" title="美集材料系统">美</a>';
 
   // ── 7 categories ──
   const categories = ['全部', '包装', '材料', '制造', '质量', '可持续发展', 'AI', '洞察', '阅读'];
