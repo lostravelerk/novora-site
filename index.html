@@ -34,7 +34,7 @@
 })();
 </script>
 
-<meta name="version" content="20260616v54">
+<meta name="version" content="20260616v55">
 <meta property="og:title" content="novora — 探索制造与创新的边界">
 <meta property="og:description" content="包装与制造产业知识库。聚焦包装、材料、制造、质量、可持续发展与AI应用。">
 <meta property="og:url" content="https://coadyke.github.io/novora-site/">
@@ -137,13 +137,13 @@
     margin-top: 7px;
   }
   .head-sub-btn {
-    font-size: 12px; font-weight: 500; padding: 3px 10px;
-    border-radius: 999px; border: 1px solid #DDE3EA;
-    color: #94A3B8; background: transparent; cursor: pointer;
-    transition: all 0.15s; white-space: nowrap; letter-spacing: 0.2px;
+    appearance: none; border: 0; background: transparent;
+    font-size: 12px; font-weight: 500; padding: 0;
+    color: #94A3B8; cursor: pointer;
+    transition: color 0.15s; white-space: nowrap; letter-spacing: 0.2px;
     flex-shrink: 0; margin-left: 4px;
   }
-  .head-sub-btn:hover { color: var(--accent); border-color: #BFCAD8; background: transparent; }
+  .head-sub-btn:hover { color: var(--accent); }
 
   .cat-nav {
     display: flex; gap: 5px; flex-wrap: nowrap;
@@ -210,7 +210,7 @@
     .site-sub { font-size: 10px; }
     .head-stats { font-size: 10px; }
     .megee-inline { font-size: 10px; }
-    .head-sub-btn { font-size: 10px; padding: 2px 8px; }
+    .head-sub-btn { font-size: 10px; }
     .head-row2 { gap: 8px; }
     .cat-row { gap: 6px; }
     .cat-pill { flex-shrink: 0; font-size: 10px; padding: 3px 10px; }
@@ -289,7 +289,7 @@
     { title: "Silgan Dispensing 深度调研报告", date: "2026-05-16", summary: "西尔格分配系统全球最完整深度分析。14页覆盖：集团架构、中国市场28年深耕、5笔重大收购、核心技术平台。", tags: ["包装","制造"], topics: ["化妆品包装","定量泵系统"], file: "articles/silgan-dispensing.html" }
   ];
 
-  document.getElementById('site-stats').innerHTML = articles.length + '篇<span class="sep">·</span>8栏目<span class="sep">·</span><span id="busuanzi_container_site_uv" style="display:inline;">No.<span id="busuanzi_value_site_uv"></span></span><span class="sep">·</span> <span id="megee-wink" style="display:inline-block">↗</span> <a href="https://megee.design" class="megee-inline" target="_blank" rel="noopener">megee⁺, packaging and more.</a><a href="https://coadyke.github.io/megee-material-site/" class="megee-material-gate" target="_blank" rel="noopener" aria-label="MEGEE PRIME™" title="MEGEE PRIME™"></a><button class="head-sub-btn" id="sub-btn">获取更新</button>';
+  document.getElementById('site-stats').innerHTML = articles.length + '篇<span class="sep">·</span>8栏目<span class="sep">·</span><span id="busuanzi_container_site_uv" style="display:inline;">No.<span id="busuanzi_value_site_uv"></span></span><span class="sep">·</span> <span id="megee-wink" style="display:inline-block">↗</span> <a href="https://megee.design" class="megee-inline" target="_blank" rel="noopener">megee⁺, packaging and more.</a><a href="https://coadyke.github.io/megee-material-site/" class="megee-material-gate" target="_blank" rel="noopener" aria-label="MEGEE PRIME™" title="MEGEE PRIME™"></a><button class="head-sub-btn" id="sub-btn">updates</button>';
 
   // ── 7 categories ──
   const categories = ['全部', '包装', '材料', '制造', '质量', '可持续发展', 'AI', '洞察', '阅读'];
