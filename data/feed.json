@@ -4,9 +4,19 @@
     "url": "https://coadyke.github.io/novora-site/",
     "description": "包装与制造产业知识库。聚焦包装、材料、制造、质量、可持续发展与AI应用。",
     "language": "zh-CN",
-    "updated": "2026-06-15T06:55:00+08:00"
+    "updated": "2026-06-16T06:55:00+08:00"
   },
   "articles": [
+    {
+      "title": "为什么单材化包装这么难？从材料科学到工业化的三重障碍",
+      "date": "2026-06-16",
+      "summary": "欧盟PPWR法规要求2030年全塑包装实现可回收设计。从EVOH阻隔原理到三条单材化技术路线，系统拆解设备兼容性、系统性能与回收闭环三重工业障碍。",
+      "tags": ["材料"],
+      "topics": ["单材化","阻隔技术","PPWR"],
+      "slug": "mono-material-barrier",
+      "url": "https://coadyke.github.io/novora-site/articles/2026-06-16-mono-material-barrier.html",
+      "image": "https://coadyke.github.io/novora-site/og-image.png"
+    },
     {
       "title": "替换装不是换个内芯那么简单——化妆品替换包装的工程挑战与设计哲学",
       "date": "2026-06-15",
