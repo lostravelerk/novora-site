@@ -1,5 +1,14 @@
 # novora 每日文章 Automation 执行记录
 
+## 2026-06-17 (周三 · 制造)
+- **栏目**: 制造 — 精益生产 / 价值流图析
+- **文章**: `articles/2026-06-17-lean-value-stream.html`
+- **标题**: 你的工厂90%的时间都在等待——价值流图析揭示的精益真相
+- **自评**: 92/100 (专业性27 + 深度18 + 逻辑性19 + 原创性14 + 实用价值14)
+- **版本**: 20260616v52 → 20260617v53
+- **Git**: commit e418dc9, push 成功 (已先 git stash + pull --rebase)
+- **CDN验证**: Git remote 确认推送成功 (commit e418dc9)，GitHub Pages 自动部署中
+
 ## 2026-06-14 (周日 · 阅读)
 - **栏目**: 阅读 — W. Brian Arthur《技术的本质》
 - **文章**: `articles/2026-06-14-the-nature-of-technology.html`
