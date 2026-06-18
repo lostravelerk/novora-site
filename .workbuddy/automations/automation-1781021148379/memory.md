@@ -8,6 +8,8 @@
 - **版本**: 20260616v52 → 20260617v53
 - **Git**: commit e418dc9, push 成功 (已先 git stash + pull --rebase)
 - **CDN验证**: Git remote 确认推送成功 (commit e418dc9)，GitHub Pages 自动部署中
+- **18:00 邮件**: 已发送通知至 megeer@megee.com（SMTP smtp.exmail.qq.com，megeebot）
+- **域名验证**: 已确认 og:url 和 ld+json 均为 lostravelerk.github.io（commit 523f985→3544bf5）
 
 ## 2026-06-14 (周日 · 阅读)
 - **栏目**: 阅读 — W. Brian Arthur《技术的本质》
