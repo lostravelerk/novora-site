@@ -1,5 +1,15 @@
 # novora 每日文章 Automation 执行记录
 
+## 2026-06-18 (周四 · 质量)
+- **栏目**: 质量 — FMEA / 失效模式与影响分析
+- **文章**: `articles/2026-06-18-fmea-methodology.html`
+- **标题**: FMEA为什么总是流于形式？——失效模式分析的正确打开方式
+- **自评**: 92/100 (专业性28 + 深度18 + 逻辑性19 + 原创性13 + 实用价值14)
+- **版本**: 20260617v53 → 20260618v74 (远程已有 v73，升级到 v74)
+- **Git**: commit ede3d5e, push 成功 (先 git stash + pull --rebase，解决三处合并冲突)
+- **邮件**: 已发送 megeer@megee.com
+- **域名**: 已修复 index.html coadyke.github.io → lostravelerk.github.io
+
 ## 2026-06-17 (周三 · 制造)
 - **栏目**: 制造 — 精益生产 / 价值流图析
 - **文章**: `articles/2026-06-17-lean-value-stream.html`

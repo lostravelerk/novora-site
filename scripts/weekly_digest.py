@@ -190,6 +190,14 @@ def main():
             print("      python3 weekly_digest.py --batch 2  # 周五")
             return
 
+    # ── ≤100 人规则：只周五发，周一/周三自动跳过 ──
+    if total <= BATCH_SIZE:
+        if batch_idx != 2:
+            print(f"订阅者 {total} 人 ≤{BATCH_SIZE}，非周五批次自动跳过。")
+            return
+        # Friday batch: send to all (batch 0)
+        batch_idx = 0
+
     # ── Send ──
     if batch_idx >= len(batches):
         print(f"批次 {batch_idx} 无订阅者（共 {len(batches)} 组），跳过。")
