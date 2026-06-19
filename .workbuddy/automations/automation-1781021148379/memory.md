@@ -1,5 +1,14 @@
 # novora 每日文章 Automation 执行记录
 
+## 2026-06-19 (周五 · AI)
+- **栏目**: AI — RAG 落地工业场景的五个盲区
+- **文章**: `articles/2026-06-19-rag-industrial-pitfalls.html`
+- **标题**: 你的企业知识库为什么喂给AI也没用？——RAG落地工业场景的五个盲区
+- **自评**: 91/100 (专业性28 + 深度18 + 逻辑性18 + 原创性13 + 实用价值14)
+- **版本**: 20260618v74 → 20260619v75
+- **Git**: commit d742762, push 成功 (先 git stash + pull --rebase，无冲突)
+- **邮件**: SMTP 认证失败 (535 system busy)，Keychain account: coady@megee.com，需人工核实密码
+
 ## 2026-06-18 (周四 · 质量)
 - **栏目**: 质量 — FMEA / 失效模式与影响分析
 - **文章**: `articles/2026-06-18-fmea-methodology.html`
