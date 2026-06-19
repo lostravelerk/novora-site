@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<script>
+(function(){
+  var meta = document.querySelector('meta[name="version"]');
+  if (!meta) return;
+  var localV = meta.content;
+  var retries = parseInt(sessionStorage.getItem('nv_ver_retry')||'0');
+  if (retries > 3) { sessionStorage.removeItem('nv_ver_retry'); return; }
+  fetch('/novora-site/version.json?t=' + Date.now(), {cache:'no-store'})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d.version && d.version !== localV) {
+        sessionStorage.setItem('nv_ver_retry', String(retries + 1));
+        var u = location.href.split('?')[0] + '?v=' + d.version + '&t=' + Date.now();
+        location.replace(u);
+      } else {
+        sessionStorage.removeItem('nv_ver_retry');
+      }
+    })
+    .catch(function(){});
+})();
+</script>
+
+<meta name="version" content="20260619v75">
+<meta property="og:title" content="天然气火焰处理系统在塑料包装印刷、烫金与喷涂中的质量影响评估与控制边界">
+<meta property="og:description" content="从液化气到天然气，不是能源替换，而是制造质量控制体系从经验驱动向工程控制的系统性转型。11章完整技术评估，含FMEA、工艺控制窗口、四材料差异化策略。">
+<meta property="og:url" content="https://novora.cc/articles/2026-06-19-natural-gas-flame-treatment.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="novora">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://novora.cc/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="article:published_time" content="2026-06-19">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="天然气火焰处理系统在塑料包装印刷、烫金与喷涂中的质量影响评估与控制边界">
+<meta name="twitter:description" content="从液化气到天然气，不是能源替换，而是制造质量控制体系从经验驱动向工程控制的系统性转型。">
+<meta name="twitter:image" content="https://novora.cc/og-image.png">
+<meta name="description" content="从液化气到天然气，不是能源替换，而是制造质量控制体系从经验驱动向工程控制的系统性转型。11章完整技术评估报告，含FMEA风险模型、工艺控制窗口、四材料差异化策略。">
+<meta itemprop="name" content="天然气火焰处理系统在塑料包装印刷、烫金与喷涂中的质量影响评估与控制边界">
+<meta itemprop="description" content="从液化气到天然气，不是能源替换，而是制造质量控制体系从经验驱动向工程控制的系统性转型。">
+<meta itemprop="image" content="https://novora.cc/og-image.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "天然气火焰处理系统在塑料包装印刷、烫金与喷涂中的质量影响评估与控制边界", "description": "从液化气到天然气，不是能源替换，而是制造质量控制体系从经验驱动向工程控制的系统性转型。11章完整技术评估报告。", "image": "https://novora.cc/og-image.png", "datePublished": "2026-06-19", "publisher": {"@type": "Organization", "name": "novora", "url": "https://novora.cc/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://novora.cc/articles/2026-06-19-natural-gas-flame-treatment.html"}}
+</script>
+
+<title>天然气火焰处理系统 — 从经验驱动到工程控制 — novora</title>
+<style>
+  :root { --bdf: #0F2747; --bdf-l: #1A3F6E; --bdf-pale: #EEF3F9; --text: #1F2937; --muted: #6B7280; --bg: #F7F7F7; --card: #FFFFFF; --gray-1: #E5E7EB; --gray-3: #9CA3B8; }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  body { padding:8px 20px; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; font-size:15px; line-height:1.75; color:var(--text); background:var(--bg); -webkit-font-smoothing:antialiased;  }
+
+  /* -- Site Header -- */
+  .site-hd { max-width:720px; margin:0 auto 2px; padding:0 4px; display:flex; align-items:baseline; gap:8px; }
+  .site-hd .site-logo { font-size:18px; font-weight:700; color:var(--bdf); letter-spacing:-0.3px; white-space:nowrap; text-decoration:none; }
+  .site-hd .site-sub { font-size:10px; color:var(--muted); letter-spacing:0.2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1; min-width:0; }
+  .logo-l { display: inline-block; }
+  @keyframes logo-nudge { 0% { transform: translateX(0); } 40% { transform: translateX(1px); } 100% { transform: translateX(0); } }
+  @keyframes logo-rebound { 0% { transform: translateX(0); } 35% { transform: translateX(1px); } 65% { transform: translateX(-0.5px); } 100% { transform: translateX(0); } }
+  .lnudge { animation: logo-nudge 0.2s ease-in-out; }
+  .lrebound { animation: logo-rebound 0.35s ease-in-out; }
+
+  /* -- Hero -- */
+  .article-hero { padding:8px 20px 6px; text-align:center; }
+  .article-hero h1 { font-size:18px; font-weight:700; color:var(--bdf); line-height:1.3; margin:0 0 4px; letter-spacing:-0.3px; }
+  .article-hero .meta { font-size:11px; color:var(--muted); }
+  .article-hero .share-bar-top { display:flex; gap:3px; justify-content:center; flex-wrap:wrap; margin-top:4px; }
+  .share-btn-top { display:inline-flex; align-items:center; gap:3px; font-size:11px; font-weight:500; color:var(--muted); background:#fff; border:1px solid var(--gray-1); border-radius:5px; padding:3px 10px; cursor:pointer; transition:all .15s; }
+  .share-btn-top:hover { border-color:#BFCAD8; color:var(--bdf); }
+
+  .ctr { max-width:720px; margin:0 auto; }
+  .art-body { background:var(--card); border-radius:16px; padding:20px 24px; border:1px solid rgba(0,0,0,0.04); }
+  .art-body h2 { font-size:16px; font-weight:700; color:var(--bdf); margin:20px 0 8px; padding-bottom:8px; border-bottom:1px solid var(--gray-1); }
+  .art-body h3 { font-size:15px; font-weight:600; color:var(--bdf-l); margin:14px 0 4px; }
+  .art-body p { margin-bottom:12px; }
+  .art-body ul, .art-body ol { padding-left:22px; margin-bottom:16px; }
+  .art-body li { margin-bottom:6px; }
+  .callout { border-left:3px solid var(--bdf-l); background:var(--bdf-pale); padding:14px 18px; border-radius:0 8px 8px 0; margin:18px 0; font-size:15px; }
+  .art-foot { text-align:center; padding:24px 0 36px; color:var(--muted); font-size:14px; }
+  .art-foot a { color:var(--bdf); text-decoration:none; }
+
+  /* Report-specific styles */
+  .highlight { background: #fffbeb; border-left: 4px solid #d69e2e; padding: 12px 16px; margin: 16px 0; font-size: 14px; }
+  .highlight p, .highlight ul, .highlight ol { text-indent: 0; }
+  .critical { background: #fff5f5; border-left: 4px solid #e53e3e; padding: 12px 16px; margin: 16px 0; font-size: 14px; }
+  .critical p, .critical ul, .critical ol { text-indent: 0; }
+  .success { background: #f0fff4; border-left: 4px solid #38a169; padding: 12px 16px; margin: 16px 0; font-size: 14px; }
+  .success p, .success ul, .success ol { text-indent: 0; }
+  .info { background: #ebf4ff; border-left: 4px solid #2563eb; padding: 12px 16px; margin: 16px 0; font-size: 14px; }
+  .info p, .info ul, .info ol { text-indent: 0; }
+  .decision-box { border: 2px solid #2563eb; border-radius: 8px; padding: 16px; margin: 16px 0; background: #ebf4ff; }
+  .decision-box h4 { margin: 0 0 10px 0; color: #1a365d; }
+  .decision-box p, .decision-box ul, .decision-box ol { text-indent: 0; }
+  .fmea-low { background: #f0fff4; }
+  .fmea-mid { background: #fffbeb; }
+  .fmea-high { background: #fff5f5; }
+  .signature { text-align: center; margin-top: 24px; font-size: 13px; color: #888; }
+  .cover { text-align: center; padding: 4px 0 0 0; }
+  .cover h1 { font-size: 18px; margin: 0 0 4px 0; font-weight: 800; }
+  .cover .sub { font-size: 13px; font-weight: 600; color: #1a365d; margin: 0 0 6px 0; }
+  .cover .meta { color: #888; font-size: 12px; line-height: 1.5; text-indent: 0; margin: 0; text-align: center; }
+  .cover p, .cover .meta { text-indent: 0; }
+  .no-indent { text-indent: 0; }
+
+  .art-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  .art-body th { background: #1a365d; color: #fff; padding: 8px 10px; text-align: center; }
+  .art-body td { border: 1px solid #cbd5e0; padding: 6px 10px; }
+  .art-body tr:nth-child(even) { background: #f7fafc; }
+
+  @media (max-width:600px) {
+    .article-hero { padding:6px 12px 4px; }
+    .article-hero h1 { font-size:18px; }
+    .art-body { padding:18px 14px; font-size:14px; }
+    .art-body h2 { font-size:16px; }
+    .art-body table { font-size:12px; }
+    .art-body th, .art-body td { padding:4px 6px; }
+  }
+  .like-count { font-variant-numeric:tabular-nums; }
+  /* Share toast & overlay */
+  .share-toast { position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:#0F2747; color:#fff; padding:10px 24px; border-radius:8px; font-size:14px; z-index:10001; opacity:0; transition:opacity .3s; pointer-events:none; white-space:nowrap; }
+  .share-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.55); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; z-index:10000; opacity:0; pointer-events:none; transition:opacity .25s; }
+  .share-overlay.show { opacity:1; pointer-events:auto; }
+  .share-panel { background:#fff; border-radius:16px; padding:32px 28px 24px; max-width:400px; width:88vw; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,0.25); }
+  .share-panel-icon { font-size:40px; margin-bottom:8px; }
+  .share-panel-title { font-size:17px; font-weight:700; color:#0F2747; margin:0 0 6px; }
+  .share-panel-sub { font-size:13px; color:#5f6b7a; margin:0 0 20px; line-height:1.6; }
+  .share-panel-url { display:flex; gap:8px; align-items:center; background:#f4f6f9; border-radius:10px; padding:10px 14px; font-size:12px; color:#3b4556; word-break:break-all; margin-bottom:16px; }
+  .share-panel-copy { display:inline-flex; align-items:center; gap:6px; background:#0F2747; color:#fff; border:none; border-radius:8px; padding:10px 22px; font-size:14px; font-weight:600; cursor:pointer; }
+  .share-panel-copy:hover { background:#1a3560; }
+  .share-panel-close { display:block; margin:16px auto 0; background:none; border:none; color:#8c97a8; font-size:13px; cursor:pointer; }
+</style>
+
+</head>
+<body>
+
+<!-- Site Header -->
+<div class="site-hd">
+  <a class="site-logo" href="https://novora.cc/" target="_top"><span class="logo-l">n</span><span class="logo-l">o</span><span class="logo-l">v</span><span class="logo-l">o</span><span class="logo-l">r</span><span class="logo-l">a</span></a>
+  <span class="site-sub">包装｜材料｜制造｜质量｜AI｜可持续发展｜洞察｜阅读</span>
+</div>
+
+<!-- Hero -->
+<div class="article-hero">
+  <h1>天然气火焰处理系统<span style="font-size:14px;font-weight:400;color:var(--muted);"><br>在塑料包装印刷、烫金与喷涂中的质量影响评估与控制边界</span></h1>
+  <p class="meta">2026年6月19日 · 技术质量评估 · 制造工程 · 11章完整报告</p>
+  <div class="share-bar-top" style="display:flex; gap:4px; justify-content:center; flex-wrap:wrap; margin-top:4px;">
+    <button class="share-btn-top" onclick="copyLink()" style="display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:500;color:#6B7280;background:#fff;border:1px solid #E5E7EB;border-radius:5px;padding:3px 10px;cursor:pointer;transition:all .2s;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      复制链接
+    </button>
+    <button class="share-btn-top" onclick="shareMoments()" style="display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:500;color:#6B7280;background:#fff;border:1px solid #E5E7EB;border-radius:5px;padding:3px 10px;cursor:pointer;transition:all .2s;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E53935" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
+      分享至朋友圈
+    </button>
+    <button class="share-btn-top" onclick="shareWechat()" style="display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:500;color:#6B7280;background:#fff;border:1px solid #E5E7EB;border-radius:5px;padding:3px 10px;cursor:pointer;transition:all .2s;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="#07C160"><path d="M8.5 11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-7.5 4c-3.3 0-6-2.2-6-5 0-2.3 1.8-4.2 4.5-4.8C5.2 2.8 8.4 1 12 1c4.7 0 8.5 3.1 8.5 7 0 1.7-.7 3.2-1.8 4.4.2.4.3.9.3 1.4 0 2.2-1.8 4-4 4-.6 0-1.2-.1-1.7-.4A6.5 6.5 0 0 1 6 15z"/></svg>
+      微信好友
+    </button>
+  </div>
+  </div>
+
+<div class="ctr art-body">
+
+<!-- ═══════════ COVER ═══════════ -->
+<div class="cover">
+<h1>天然气火焰处理系统在塑料包装印刷、烫金与喷涂中的质量影响评估与控制边界</h1>
+<p class="sub">技术质量评估报告</p>
+<p class="meta">研究范围：化妆品塑料瓶器（PP / PE / PETG / PET）丝印前火焰预处理环节 &middot; 报告性质：工程技术可行性评估 &middot; 新工厂火焰处理系统设计依据 &middot; QMS 质量控制标准输入<br>审稿人：美集智能体 &middot; 版本：v3.0（终版）&middot; 2026年6月</p>
+</div>
+
+<!-- ═══════════ §0 报告定位 ═══════════ -->
+<h2>0. 报告定位</h2>
+
+<div class="info">
+<p><strong>本报告基于塑料包装制造行业火焰表面处理的实际应用场景，系统评估天然气火焰处理系统在丝网印刷工艺中的质量影响机制，并以传统液化气（LPG）火焰处理系统作为历史基准进行对照分析。</strong></p>
+</div>
+
+<h3>0.1 重点关注</h3>
+<ul>
+  <li>工艺从液化气分散供气体系向天然气中央供气体系的迁移影响</li>
+  <li>表面能处理一致性对丝印附着力的最终质量影响</li>
+  <li>工艺控制边界与系统设计要求的对应关系</li>
+  <li>质量风险从"操作层波动"向"工程系统设计精度"的迁移路径</li>
+</ul>
+
+<h3>0.2 适用场景</h3>
+<ul>
+  <li>新工厂火焰处理系统设计与设备选型依据</li>
+  <li>QMS 质量控制标准中火焰预处理工序的工艺参数输入</li>
+  <li>天然气替代 LPG 项目的工艺验证与设备验收参考</li>
+  <li>PP / PE / PETG / PET 四类常见化妆品塑料瓶器材料的火焰处理作业指导</li>
+</ul>
+
+<!-- ═══════════ §1 行业背景与工艺演进 ═══════════ -->
+<h2>1. 行业背景与工艺演进</h2>
+
+<h3>1.1 火焰处理在化妆品塑料瓶器中的作用</h3>
+<p>火焰处理是一种典型的塑料表面前处理工艺。其核心不是加热，而是通过可控热氧反应改变材料表面能状态：去除表面低分子污染层（脱模剂、助剂残留），在塑料表层引入极性官能团（C=O、C-OH），提升表面润湿性（达因值提升），从而改善油墨与涂层的附着力。在高端化妆品包装中，该工艺属于质量关键前置工序（Critical Surface Process），直接决定了丝印图案的耐久性——印刷脱落往往在客户端使用数周后才暴露，一旦发生，后果严重。</p>
+
+<h3>1.2 传统工艺现状：液化气分散控制体系</h3>
+<p>行业长期采用液化石油气（LPG，丙烷~70%/丁烷~30%）钢瓶供气火焰处理系统。典型结构为：钢瓶分散供气 → 单机减压阀 → 独立燃烧器（burner）→ 防爆箱隔离。该体系的核心特征是<strong>分散式供能结构 + 单机独立控制 + 依赖操作员经验调节</strong>——本质属于"分散控制 + 人工经验驱动型火焰处理系统"。</p>
+
+<p>随着产线速度提升、多工艺共线（印刷/烫金/喷涂）普及、客户对批次一致性要求显著提升，传统体系的固有局限逐渐暴露：钢瓶更换中断生产、冬季气化率骤降导致火焰偏弱、LPG 价格随原油波动不可控、批次间波动与机台间差异大、操作依赖性强。</p>
+
+<h3>1.3 新工厂工艺升级背景</h3>
+<p>市政管道天然气（甲烷 CH₄ ≥ 95%）加速覆盖工业园区，价格约为 LPG 的 1/3~1/2 且供应不断档。但切换决策的核心卡点始终是：<strong>天然气能否保证丝印前火焰处理质量？</strong>本报告即从工程技术维度回答这一问题。</p>
+
+<p>需要特别指出：火焰处理系统的升级——从液化气到天然气——其本质<strong>不是简单的能源替换，而是制造质量控制体系从"经验驱动"向"工程控制"的系统性转型</strong>。天然气只是载体，三件套核心设备（金属纤维燃烧器、冷冻干燥机、稳压缓冲罐）是转型的具体抓手。这一判断将贯穿本报告全文。</p>
+
+<!-- ═══════════ §2 气源物化特性对比 ═══════════ -->
+<h2>2. 两种气源的物化特性对比分析</h2>
+
+<h3>2.1 成分组成与基本热物性</h3>
+
+<p>LPG 与天然气在分子层面的根本差异，决定了后续所有技术讨论的起点。</p>
+
+<table>
+  <tr><th>参数</th><th>LPG（液化石油气）</th><th>天然气</th><th>差异方向</th></tr>
+  <tr><td>主要成分</td><td>丙烷 C₃H₈ 70~80%<br>丁烷 C₄H₁₀ 20~30%</td><td>甲烷 CH₄ &ge;95%</td><td>—</td></tr>
+  <tr><td>低热值（LHV）</td><td>&asymp;93.2 MJ/Nm³</td><td>&asymp;35.9 MJ/Nm³</td><td>天然气仅为LPG的38.5%</td></tr>
+  <tr><td>理论空气量</td><td>&asymp;24 Nm³/Nm³ fuel</td><td>&asymp;9.5 Nm³/Nm³ fuel</td><td>天然气需空气量更少</td></tr>
+  <tr><td>绝热火焰温度（理论值）</td><td>&asymp;1980&deg;C</td><td>&asymp;1950&deg;C</td><td>理论热力学上限，差异仅约30&deg;C</td></tr>
+  <tr><td>实际开放火焰核心温度</td><td>1400~1550&deg;C</td><td>1350~1500&deg;C</td><td>计入散热后的真实工况值</td></tr>
+  <tr><td>火焰传播速度</td><td>0.40~0.45 m/s（丙烷）</td><td>0.37~0.40 m/s</td><td>天然气略慢</td></tr>
+  <tr><td>H/C原子比</td><td>丙烷：8/3&asymp;2.67</td><td>甲烷：4</td><td>天然气H/C比更高→生成更多水蒸气</td></tr>
+  <tr><td>密度（相对空气）</td><td>丙烷：1.52 | 丁烷：2.01</td><td>0.55</td><td>LPG重于空气，天然气轻于空气</td></tr>
+</table>
+
+<p>上表揭示了两个最关键的差异。其一，天然气的单位体积热值仅为 LPG 的约 38.5%——同样热负荷需约 2.6 倍的体积流量，对燃烧器和管道通径提出不同要求。其二，天然气 H/C 原子比（4.0）显著高于丙烷（2.67），在化学计量层面意味着<strong>燃烧同样热量时，天然气生成的水蒸气量比 LPG 多约 25%</strong>（详见 §2.2）。需要特别指出：表中"绝热火焰温度"为燃烧学理论计算上限（假定完全燃烧、零热损失），并非车间测温枪读数——计入辐射和对流散热后，两种气源的开放火焰核心温度均在 1350~1550°C 范围，真实温差远小于 30°C。温度本身不是主要矛盾，传热模式差异才是根本（见下文）。</p>
+
+<h3>2.2 燃烧产物差异分析</h3>
+
+<p><strong>单位热量水蒸气生成量计算：</strong>甲烷 CH₄+2O₂→CO₂+2H₂O，每立方米燃烧生成 2 mol 水蒸气，单位热量水蒸气生成量 = 2/35.9 &asymp; 0.0557 mol/MJ。丙烷 C₃H₈+5O₂→3CO₂+4H₂O，单位热量 = 4/93.2 &asymp; 0.0429 mol/MJ。比值 0.0557/0.0429 &asymp; 1.30——即<strong>燃烧同量热量时天然气比 LPG 多生成约 30% 水蒸气</strong>。计入 LPG 中丁烷组分（C₄H₁₀+6.5O₂→4CO₂+5H₂O）后综合加权计算，天然气较 LPG 多生成约 25% 水蒸气。</p>
+
+<p><strong>"火焰偏软"的物理根源：</strong>两种气源的实际火焰核心温度差异并不大（真实工况下均在 1350~1550°C），但传热模式占比有本质区别。丙烷/丁烷因碳链较长，燃烧时外层火焰中总会有微量未完全氧化的碳微粒（即便在偏氧化焰条件下），这些高温碳粒构成有效的红外辐射体——在 0.8~5 μm 波段具有强发射率——增强了火焰对瓶体表面的<strong>辐射传热分量</strong>。甲烷分子仅含一个碳原子，完全燃烧时无碳粒生成，辐射传热占比大幅降低，热量以<strong>对流传热</strong>为主传递到工件表面。两种传热模式的关键差异在于：辐射是光速传递、无需介质的"快通道"，对流则依赖热边界层建立、在毫秒级时间尺度上"慢一拍"。工程上表现为"天然气火焰偏软，LPG 火焰偏硬"——<strong>"软"的实质是辐射热分量不足导致瞬时热冲击能力弱</strong>。这一差异在高线速（>30 m/min）生产中尤为关键（详见 §5.1）。</p>
+
+<div class="highlight">
+<p><strong>关键工程结论：</strong>天然气火焰"软"的传热学根源是辐射热占比低于 LPG，但可以通过选择高红外辐射转化率的金属纤维表面燃烧器来弥补（详见 §5.1）。CO₂ 排放方面，天然气单位热量排放约为 LPG 的 70%，构成环保优势。</p>
+</div>
+
+<h3>2.3 供气稳定性对比</h3>
+
+<p><strong>LPG 不稳定模式——"罐压漂移"：</strong>钢瓶内压力等于该温度下的饱和蒸气压。冬季 5°C 时丙烷饱和蒸气压约 0.55 MPa，夏季 35°C 时约 1.20 MPa——波动幅度超 100%。随着液位下降、气化面积减小，后期供气能力进一步衰减（"越用越软"）。</p>
+
+<p><strong>天然气不稳定模式——"管网脉动"：</strong>早晚用气高峰（7:00-9:00/17:00-19:00），管网压力可能从额定 0.20 MPa 跌至 0.15 MPa，波动幅度 ±25%。但波动可预测、可缓冲——这正是 §5.3 中建议安装稳压缓冲罐的技术基础。</p>
+
+<table>
+  <tr><th>对比维度</th><th>LPG（钢瓶供气）</th><th>天然气（管网供气）</th></tr>
+  <tr><td>波动根源</td><td>温度驱动的饱和蒸气压变化 + 液位衰减</td><td>区域用气负荷驱动的管网压力波动</td></tr>
+  <tr><td>波动幅度</td><td>100%以上（冬夏极端）</td><td>典型 &le;&plusmn;25%</td></tr>
+  <tr><td>可预测性</td><td>随季节和液位连续漂移，较难预测</td><td>早晚高峰规律，可预测</td></tr>
+  <tr><td>可补偿性</td><td>需频繁调整减压阀开度</td><td>加装缓冲罐后即可恒压</td></tr>
+</table>
+
+<!-- ═══════════ §3 火焰处理机理与四材料差异 ═══════════ -->
+<h2>3. 火焰处理机理与四种塑料瓶器材料差异</h2>
+
+<h3>3.1 塑料表面火焰处理的物理化学过程</h3>
+
+<p>火焰预处理的核心原理：碳氢燃料在偏富氧条件下燃烧时，火焰外层等离子体中富含高活性氧物种——原子氧 O&middot;、羟基自由基 OH&middot;、激发态氧分子 O₂⁺——对塑料表层约 2~10 nm 深度进行瞬时（10~100 ms）氧化攻击。这些活性物种将 PP/PE 分子链上的 C-H 键（键能 &asymp;413 kJ/mol）切断，在断裂位点引入含氧极性基团：羰基 C=O（&asymp;1715 cm⁻¹）、羧基 -COOH、羟基 C-OH（&asymp;3400 cm⁻¹）。</p>
+
+<p>表面极性基团密度增加，直接体现为表面自由能提升——即行业通用的达因笔测试所测量的润湿张力。未经处理的 PP 表面能约 30~32 dyne/cm（以非极性色散力为主），经有效火焰处理后升至 42~46 dyne/cm，极性位点可为油墨树脂基团提供充足的氢键和范德华力锚固。</p>
+
+<h3>3.2 四种塑料瓶器材料的差异化处理需求</h3>
+
+<p><strong>PP（聚丙烯）：</strong>最难附着的塑料之一。全碳氢骨架，无极性基团，本征表面能 30~32 dyne/cm。结晶度 60~70%，晶区致密阻挡氧自由基渗透，氧化反应局限于非晶区边界。需最强火焰条件——高辐射热、长驻留时间（50~150 ms）、偏氧化焰（&Phi;&asymp;1.05~1.15）。热变形温度约 100°C，处理窗口较宽。</p>
+
+<p><strong>PE（聚乙烯，LDPE/HDPE）：</strong>同样非极性（表面能 31~33 dyne/cm），但结晶度低于 PP（LDPE 40~55%，HDPE 60~80%），非晶区比例更高，化学活化难度低于 PP。致命弱点是热敏性：HDPE 熔点仅 ~130°C，LDPE 更低（~110°C），火焰瞬时高温极易导致瓶体软化变形。处理策略：<strong>偏温和的热输入 + 稍长驻留时间</strong>（40~100 ms），依赖化学氧化深度弥补热量输入的不足。常见于软管、吹塑瓶。</p>
+
+<p><strong>PETG（乙二醇改性 PET）：</strong>极性材料，分子链固有酯基（-COO-），本征表面能 38~40 dyne/cm，化学活化容易。但<strong>极不耐热</strong>：Tg 约 80°C，热变形温度（0.45 MPa）约 70°C。火焰处理窗口极窄——温度或停留时间稍高即过烧（发白、起泡、变形）。处理策略：<strong>极低热输入 + 短驻留时间（30~80 ms）+ 远距离（30~40 mm）</strong>，本质是"在材料热损伤的刀尖上行走"。</p>
+
+<p><strong>PET（非改性，结晶型）：</strong>同样含酯基，本征表面能 38~42 dyne/cm，化学活化容易。与 PETG 的关键区别：<strong>高耐热性</strong>（Tm ~250°C，远高于 PETG 的 ~80°C Tg），处理窗口远比 PETG 宽。但结晶度远高于 PETG（PET ~30~50% vs PETG 几乎全非晶），晶区抵抗氧化——需在较高温度下处理才能穿透晶界。综合策略：<strong>偏高热输入 + 中等驻留时间（50~120 ms）</strong>，是四类材料中工艺弹性最大的。常见于厚壁透明瓶、香水瓶。</p>
+
+<h3>3.3 火焰预处理效果的核心控制变量</h3>
+
+<table>
+  <tr><th>控制变量</th><th>作用机制</th><th>对 PP/PE 的影响</th><th>对 PETG/PET 的影响</th></tr>
+  <tr>
+    <td>火焰温度场与辐射强度</td>
+    <td>决定活性自由基浓度及向瓶体表面传递的能量密度</td>
+    <td>PP 需强辐射热；PE 需温和热输入+长驻留</td>
+    <td>PETG 需极低热输入防过烧；PET 耐热好，窗口宽</td>
+  </tr>
+  <tr>
+    <td>氧燃比（当量比 &Phi;）</td>
+    <td>&Phi;<1 为还原焰，&Phi;>1 为氧化焰；&Phi;&asymp;1.05~1.10 时 O&middot;/OH&middot; 浓度最高</td>
+    <td>PP 需偏氧化焰（&Phi;~1.05-1.15）；PE 更需控制氧燃比防过烧</td>
+    <td>PETG/PET 均需偏氧化焰；PETG 热输入严控更关键</td>
+  </tr>
+  <tr>
+    <td>处理时间（链速）与处理距离</td>
+    <td>决定瓶体表面在火焰外层高活性区的驻留时间</td>
+    <td>PP 可承受 50~150 ms；PE 需 40~100 ms</td>
+    <td>PETG 严格 30~80 ms；PET 可放宽至 50~120 ms</td>
+  </tr>
+  <tr>
+    <td>水蒸气干扰</td>
+    <td>水分子与活性自由基竞争，且在瓶体表面形成极薄液膜</td>
+    <td>PP/PE 均受影响；PE 因需更长驻留暴露更久</td>
+    <td>PETG 因处理窗口极窄对水蒸气最敏感；PET 中等</td>
+  </tr>
+</table>
+
+<!-- ═══════════ §4 质量影响对比：印刷/烫金/喷涂 ═══════════ -->
+<h2>4. 质量影响对比分析：印刷、烫金与喷涂工艺</h2>
+
+<h3>4.1 丝网印刷系统</h3>
+
+<table>
+  <tr><th>质量指标</th><th>液化气（LPG）体系</th><th>天然气体系</th></tr>
+  <tr><td>表面处理一致性</td><td>中等 — 批次间/机台间波动明显</td><td>高 — 中央供气稳压后批次一致</td></tr>
+  <tr><td>附着稳定性</td><td>波动 — 冬季/罐底气化不足时偏弱</td><td>稳定 — 全年火焰形态一致</td></tr>
+  <tr><td>脱墨风险</td><td>中等 — 罐压漂移导致局部欠处理</td><td>低 — 配合稳压缓冲罐后火焰恒定</td></tr>
+  <tr><td>批次差异</td><td>明显 — 依赖操作员调节技能</td><td>小 — 标准化参数可锁定为 SOP</td></tr>
+</table>
+
+<h3>4.2 烫金系统</h3>
+
+<p>烫金工艺对表面能的均匀性高度敏感。液化气体系下，分散供气导致的机台间差异使局部热处理不一致，烫金箔剥离（peel）的界面润湿不均，边缘稳定性波动。天然气体系在中央供气 + 稳压控制模式下，界面润湿更均匀，peel 稳定性更高，批次一致性提升明显。</p>
+
+<p><strong>注：</strong>烫金模头本身为独立电加热控温（120~180°C），其工作温度由电热元件维持，与气源种类无关。天然气对烫金质量的影响仅限于<strong>前端的火焰预处理环节</strong>——即瓶体表面在进入烫金工位之前的表面能状态。</p>
+
+<h3>4.3 喷涂系统（高敏感工艺）</h3>
+
+<p>喷涂是对表面能均匀性要求最高的后道工艺。液化气体系下，分散式火焰头在瓶体不同区域的能量密度不一致，表面应力不均匀，局部过处理会放大涂层微观缺陷——coating 不均、橘皮、缩孔风险显著升高。天然气体系：表面能均匀性显著提升，defect 率降低，<strong>更适合高端喷涂体系</strong>（UV 光油、真空镀膜前处理等）。</p>
+
+<div class="success">
+<p><strong>三工艺汇总：</strong>天然气体系在印刷、烫金、喷涂三类后道工艺中，均表现出<strong>表面处理一致性优于 LPG 体系</strong>的特征。这一优势的根源不是天然气本身更"热"或更"强"，而是中央供气 + 工程控制体系消除了分散钢瓶供气固有的压力漂移和组分波动。</p>
+</div>
+
+<!-- ═══════════ §5 天然气三大风险与工程规避 ═══════════ -->
+<h2>5. 天然气三大质量风险与工程规避方案</h2>
+
+<p class="no-indent"><em>本章为本报告的工程核心。天然气替代 LPG 不是简单的"拧下钢瓶、接上管道"，而是需要在设备配置层面针对性弥补天然气的物理短板。三项风险对应三项强制设备配置。</em></p>
+
+<h3>5.1 风险一：火焰辐射热偏弱 → 高速生产线瞬时升温能力不足</h3>
+
+<p><strong>机理分析：</strong>如 §2.2 所述，天然气辐射热占比低于 LPG——甲烷分子仅含一个碳原子，燃烧无碳微粒，缺乏有效的红外辐射源。在低速或间歇式生产线上，对流热有足够时间将瓶体加热至氧化所需温度，辐射缺失不构成限制。但在高速生产线（链速 >30 m/min）上，每个瓶体经过火焰区仅数十毫秒，对流换热来不及充分传递热量，辐射热——即光速传递、不需介质的"快通道"——变得至关重要。LPG 凭着碳粒白炽辐射，能在瞬间给瓶体表面高温冲击；天然气丢失了这个快通道。</p>
+
+<p><strong>潜在危害：</strong>PP/PE 瓶体表面温度达不到氧化阈值（PP 需瞬时 120~180°C），断链氧化不充分，达因值不达标。丝印后 3M 胶带测试整片脱落。</p>
+
+<p><strong>规避方案——必须采用金属纤维表面燃烧器：</strong>传统喷射式火排（bunsen tube + slit nozzle）产生自由射流火焰，对流热占比 70~80%，红外辐射仅 20~30%。金属纤维表面燃烧器（metal fiber burner）由一个多孔金属纤维编织面板构成，预混气体在多孔介质表面进行无焰氧化，面板被加热至 800~1000°C，成为高效近红外辐射板，<strong>辐射热占比可提升至 50~60% 以上</strong>——可有效弥补天然气"火焰软"的物理短板。</p>
+
+<div class="critical">
+<p><strong>强制项：</strong>金属纤维表面燃烧器是天然气方案中<strong>必须配套</strong>的核心设备。若沿用传统喷射式火排，高速生产线存在达因值不达标的系统性风险，不建议推进天然气替代。</p>
+</div>
+
+<h3>5.2 风险二：燃烧产物水蒸气含量高 → 湿度干扰预处理效果（最核心风险）</h3>
+
+<p><strong>机理分析——本报告最核心的技术风险点：</strong></p>
+
+<p>§2.2 已定量证明，燃烧同量热量时天然气比 LPG 多生成约 25% 水蒸气。水分子对火焰预处理构成<strong>双重抑制机制</strong>：</p>
+
+<p><strong>第一重——气相抑制：</strong>水分子与火焰等离子体中的活性氧自由基（O&middot;、OH&middot;）发生竞争。OH&middot; 是塑料表面 C-H 键断裂后结合羟基、生成极性基团（C-OH）的核心活性物种。环境中水分子浓度升高，稀释了 OH&middot; 的有效浓度。</p>
+
+<p><strong>第二重——表面液膜屏障（更隐蔽、更具破坏性）：</strong>燃烧生成的高温水蒸气离开火焰高温区后降温，部分水分子在较冷的塑料瓶体表面凝结成极薄液膜（分子级厚度，肉眼不可见）。该液膜在两方面抑制活化：（1）物理阻挡——覆盖已生成的极性基团，阻挡其与后续油墨的氢键锚固；（2）水解竞争——液膜中的水分子与已生成的极性位点形成氢键，占据本应由油墨基团占据的锚固位点。</p>
+
+<p><strong>"假性活化"机制：</strong>刚处理完时瓶体表面仍有残余温度，液膜尚未完全形成，达因笔测试显示达标（&ge;44 dyne）。但放置 10~30 分钟后，瓶体冷却至室温，液膜充分形成并稳定，极性基团被水分子的氢键竞争"去活化"，达因值急剧衰减——达因笔墨线不再连续，回缩为液滴。此时油墨按已处理表面进行印刷，但附着力根基已被液膜侵蚀，丝印后在客户端出现批量脱落。<strong>该缺陷极难在出厂检验中拦截，往往已制成成品流入客户处才暴露</strong>。</p>
+
+<p><strong>规避方案——必须加装压缩空气冷冻式干燥机：</strong>水蒸气源头有两处：一是天然气燃烧自身产生（不可消除），二是助燃压缩空气中携带的水分。加装冷冻式干燥机将助燃空气压力露点降至 -20°C 以下（对应常压露点约 -35°C），从源头大幅削减进入火焰区域的额外水分，使燃烧总水蒸气量回归可控范围。</p>
+
+<div class="critical">
+<p><strong>强制项：</strong>压缩空气冷冻式干燥机是<strong>最容易被忽略但最不可缺失</strong>的设备。缺失该设备时，"假性活化"的隐蔽性和滞后性导致风险极高且后果严重。露点要求：&le;-20°C（压力露点）。</p>
+</div>
+
+<h3>5.3 风险三：市政管网压力波动 → 火焰长短"脉动"导致预处理不均</h3>
+
+<p><strong>机理分析：</strong>早晚用气高峰管网压力可能从 0.20 MPa 跌至 0.15 MPa（±25%）。不设缓冲时，燃烧器入口压力直接跟踪管网波动，火焰长度随之"呼吸式"伸缩——管网压力跌落 25% 时火焰长度缩短约 10~15%，瓶体底部离开火焰外层高活性区。同一瓶体上迎火面达因值可能为 46，背火底部仅 40——差异高达 6 dyne。抽检极难覆盖每个瓶体每个表面区域，该缺陷极易漏过出厂检验。</p>
+
+<p><strong>规避方案——必须安装燃气稳压缓冲罐：</strong>在燃烧器上游加装 0.5~1 m³ 稳压缓冲罐（类似电路滤波电容），配合双级调压阀组（第一级粗调至 0.3~0.5 MPa，第二级精调至工艺设定压力），保证进入燃烧器的气体压力稳定在设定值 ±1% 以内。这是成熟工业燃气工程实践。</p>
+
+<div class="critical">
+<p><strong>强制项：</strong>燃气稳压缓冲罐（0.5~1 m³，含双级调压阀组）是天然气方案中<strong>必须配套</strong>的设备，需经压力容器安全检验。</p>
+</div>
+
+<!-- ═══════════ §6 工艺控制窗口 ═══════════ -->
+<h2>6. 工艺控制窗口</h2>
+
+<h3>6.1 天然气推荐控制窗口</h3>
+
+<table>
+  <tr><th>参数</th><th>推荐范围</th><th>说明</th></tr>
+  <tr><td>火焰距离（flame distance）</td><td>8~15 mm</td><td>喷嘴至瓶体表面距离，PP/PET 可偏近，PE/PETG 偏远以降低热输入</td></tr>
+  <tr><td>驻留时间（exposure time）</td><td>0.2~0.6 s</td><td>含火焰外层有效活性区停留时间，对应链速调节</td></tr>
+  <tr><td>线速（line speed）</td><td>10~60 m/min</td><td>低速利于充分活化，高速需匹配金属纤维燃烧器增强辐射</td></tr>
+  <tr><td>PP 达因值目标</td><td>38~44 dyne</td><td>丝印通用范围；烫金/UV 光油建议 &ge;42</td></tr>
+  <tr><td>PE 达因值目标</td><td>36~42 dyne</td><td>受限于热敏性，过高目标会导致热变形</td></tr>
+  <tr><td>PETG 达因值目标</td><td>40~46 dyne</td><td>本征表面能高，但窗口窄，需精确控制</td></tr>
+  <tr><td>PET 达因值目标</td><td>40~46 dyne</td><td>窗口最宽，工艺弹性最大</td></tr>
+</table>
+
+<h3>6.2 控制原则</h3>
+
+<p>从液化气到天然气的切换，火焰处理质量控制的核心理念随之变化：</p>
+
+<div class="highlight">
+<p><strong>液化气时代：</strong>"把火烧得够硬"——控制焦点在火焰强度与局部能量密度，依赖操作员的手感和经验。</p>
+<p><strong>天然气时代：</strong>"把均匀性做到极致"——控制焦点从强度转向<strong>均匀性与系统稳定性</strong>。中央供气 + 稳压 + 干燥空气 + 标准化燃烧器模块，将工艺从"人的手艺"变为"系统的能力"。</p>
+</div>
+
+<!-- ═══════════ §7 质量风险模型 (FMEA) ═══════════ -->
+<h2>7. 质量风险模型（FMEA）：从操作层到系统层的风险迁移</h2>
+
+<h3>7.1 液化气（LPG）体系风险特征</h3>
+
+<table>
+  <tr><th>风险项</th><th>失效模式</th><th>严重度 S</th><th>频度 O</th><th>探测度 D</th><th>RPN</th><th>风险来源层</th></tr>
+  <tr class="fmea-high">
+    <td>过处理（局部热冲击）</td><td>PETG 表面发白/变形/气泡；PE 软化变形</td><td>7</td><td>5</td><td>3</td><td>105</td><td>操作层</td>
+  </tr>
+  <tr class="fmea-high">
+    <td>批次波动</td><td>冬季罐压不足→达因值偏低→丝印脱落</td><td>8</td><td>6</td><td>4</td><td>192</td><td>操作层</td>
+  </tr>
+  <tr class="fmea-mid">
+    <td>机台间差异</td><td>不同钢瓶/减压阀→不同火焰→不同附着力</td><td>6</td><td>5</td><td>4</td><td>120</td><td>操作层</td>
+  </tr>
+  <tr class="fmea-mid">
+    <td>操作依赖</td><td>换瓶后参数未复位→批量欠处理</td><td>7</td><td>4</td><td>3</td><td>84</td><td>操作层</td>
+  </tr>
+</table>
+
+<h3>7.2 天然气体系风险特征</h3>
+
+<table>
+  <tr><th>风险项</th><th>失效模式</th><th>严重度 S</th><th>频度 O</th><th>探测度 D</th><th>RPN</th><th>风险来源层</th></tr>
+  <tr class="fmea-high">
+    <td>放射热不足→处理不足</td><td>高速线 PP/PE 达因值 &lt;44，丝印脱落</td><td>8</td><td>6*</td><td>4</td><td>192</td><td>系统层</td>
+  </tr>
+  <tr class="fmea-high">
+    <td>水蒸气干扰→假性活化</td><td>T₀ 达标→T₁₀/T₃₀ 衰减超标→批量报废</td><td>9</td><td>7*</td><td>8</td><td>504</td><td>系统层</td>
+  </tr>
+  <tr class="fmea-mid">
+    <td>管网压力波动→处理不均</td><td>同瓶迎火面/背火面差异>4 dyne</td><td>7</td><td>5*</td><td>5</td><td>175</td><td>系统层</td>
+  </tr>
+  <tr class="fmea-low">
+    <td>燃烧器一致性差异</td><td>多机台间火焰形态差异</td><td>5</td><td>2</td><td>2</td><td>20</td><td>系统层</td>
+  </tr>
+</table>
+
+<p class="no-indent"><em>* 频度 O 值为<strong>未配置对应规避设备时的评级</strong>。配置金属纤维燃烧器后风险一 O 值降为 2；配置冷冻干燥机后风险二 O 值降为 2；配置稳压缓冲罐后风险三 O 值降为 2。三项设备齐全后，天然气体系的综合 RPN 远低于液化气体系。</em></p>
+
+<h3>7.3 风险迁移结论</h3>
+
+<div class="success">
+<p><strong>核心判断：切换至天然气体系后，质量风险从"操作层波动"（人工经验、罐压漂移、批次差异）迁移至"工程系统设计精度"（设备选型、系统集成、工艺验证）。</strong></p>
+<p>这一迁移本身是<strong>正向升级</strong>——操作层风险难以根治（依赖人的一致性），而系统层风险可以通过正确的设备配置和工艺验证<strong>一次性解决</strong>。天然气三件套（金属纤维燃烧器 + 冷冻干燥机 + 稳压缓冲罐）就是将系统层风险降至可控水平的具体工程手段。</p>
+</div>
+
+<!-- ═══════════ §8 设备配置核查 ═══════════ -->
+<h2>8. 设备配置完整性核查</h2>
+
+<h3>8.1 三大核心设备清单及选型要求</h3>
+
+<table>
+  <tr><th>序号</th><th>设备名称</th><th>规格/选型要求</th><th>必要性</th></tr>
+  <tr>
+    <td style="text-align:center">1</td>
+    <td><strong>金属纤维表面燃烧器</strong></td>
+    <td>适配天然气；红外辐射转化率 &ge;50%；有效宽度覆盖最大瓶体直径+20mm 裕量；面板温度 800~1000°C；含预混腔及风量调节</td>
+    <td style="text-align:center;color:#e53e3e;font-weight:700">强制项</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">2</td>
+    <td><strong>压缩空气冷冻式干燥机</strong></td>
+    <td>处理气量 &ge; 车间压缩空气总用量的 1.2 倍；压力露点 &le;-20°C；含自动排水阀及露点监测</td>
+    <td style="text-align:center;color:#e53e3e;font-weight:700">强制项</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">3</td>
+    <td><strong>燃气稳压缓冲罐</strong></td>
+    <td>容积 0.5~1 m³；设计压力 &ge;0.4 MPa；含双级调压阀组及压力表；经压力容器安全检验；带安全泄压阀</td>
+    <td style="text-align:center;color:#e53e3e;font-weight:700">强制项</td>
+  </tr>
+</table>
+
+<h3>8.2 配置完整性评估</h3>
+
+<div class="decision-box">
+<h4>完整性判据</h4>
+<ul>
+  <li><strong>三项齐全</strong> → ✅ 技术方案完整，三项风险均被对应工程措施覆盖，可进入离线打样验证阶段</li>
+  <li><strong>缺任意一项</strong> → ❌ 存在未覆盖的系统层风险。缺 1→辐射热不足风险；缺 2→假性活化风险（RPN=504，最致命）；缺 3→管网压力脉动风险。不建议签约甲烷替换合同</li>
+</ul>
+</div>
+
+<p>尤其需要指出，冷冻式干燥机是三个强制项中最容易被遗漏的。很多燃气工程方案仅关注燃烧器本身，忽略了助燃空气品质对塑料表面活化这一特殊工艺的影响——与普通工业加热（锅炉、退火炉）有本质区别：在火焰预处理中，燃烧产物直接接触并参与目标表面的化学改质，水蒸气不是"无害伴生物"，而是"活性反应干扰物"。</p>
+
+<!-- ═══════════ §9 离线打样验证 ═══════════ -->
+<h2>9. 离线打样验证实验设计</h2>
+
+<h3>9.1 验证目的</h3>
+
+<p>在实际投资决策前，以最小成本（总费用 <5000 元）在实际工况下完成离线打样验证，获取"一票否决"级决策数据。</p>
+
+<h3>9.2 实验材料与仪器清单</h3>
+
+<table>
+  <tr><th>类别</th><th>物品</th><th>规格/数量</th></tr>
+  <tr><td>气源</td><td>小瓶装压缩天然气（CNG）</td><td>1 瓶（含减压阀及适配接口）</td></tr>
+  <tr><td>燃烧器</td><td>便携式金属纤维表面燃烧头</td><td>1 套（可向设备供应商借用样机）</td></tr>
+  <tr><td rowspan="2">测试工具</td><td>达因笔套装（38/40/42/44/46/48 dyne）</td><td>1 套</td></tr>
+  <tr><td>秒表、游标卡尺、固定距离夹具</td><td>各 1</td></tr>
+  <tr><td>样品</td><td>PP 瓶 × 30、PE 瓶 × 30、PETG 瓶 × 30、PET 瓶 × 30</td><td>四类材料各 30 个，合计 120 个</td></tr>
+  <tr><td>辅助</td><td>压缩空气冷冻式干燥机（或便携式干燥过滤器）</td><td>1 台</td></tr>
+</table>
+
+<h3>9.3 实验步骤</h3>
+
+<ol>
+  <li><strong>编号分组：</strong>PP→P1~P30，PE→E1~E30，PETG→G1~G30，PET→T1~T30。各类均分 3 组（对应链速 V₁=V×0.8, V₂=V×1.0, V₃=V×1.2），每组 10 个。</li>
+  <li><strong>设备校准：</strong>开启冷冻干燥机确认露点 &le;-20°C。连接天然气→稳压阀→燃烧器。点燃预热 5 分钟至金属纤维面板达暗红色稳态。固定喷嘴至瓶体距离 30 mm（初始值）。</li>
+  <li><strong>分组处理：</strong>按组依次处理。各处完成后立即进入达因值测试，组间间隔不超过 1 分钟。</li>
+  <li><strong>立即测试（T₀）：</strong>用达因笔从 38 dyne 递增测试，记录"连续墨线保持不断裂"的最高值。</li>
+  <li><strong>10 分钟复测（T₁₀）：</strong>处理完毕 10 分钟后同一区域复测。</li>
+  <li><strong>30 分钟复测（T₃₀）：</strong>处理完毕 30 分钟后同一区域复测。</li>
+  <li><strong>如初始不达标：</strong>微调距离（±5 mm × 2 档）和链速后，重复步骤 3~6，最多两轮微调。</li>
+</ol>
+
+<h3>9.4 合格判定标准与决策树</h3>
+
+<table>
+  <tr><th>判定项</th><th>PP</th><th>PE</th><th>PETG</th><th>PET</th><th>判定方法</th></tr>
+  <tr><td>初始达因值（T₀）</td><td>&ge;44</td><td>&ge;42</td><td>&ge;46</td><td>&ge;46</td><td>取组内最低值</td></tr>
+  <tr><td>10分钟后衰减量</td><td>&le;2</td><td>&le;2</td><td>&le;2</td><td>&le;2</td><td>&Delta;=T₀&minus;T₁₀</td></tr>
+  <tr><td>30分钟后衰减量</td><td>&le;4</td><td>&le;4</td><td>&le;4</td><td>&le;4</td><td>&Delta;=T₀&minus;T₃₀</td></tr>
+</table>
+
+<div class="decision-box">
+<h4>决策树</h4>
+<p><strong>路径一：三项全部达标</strong><br>
+→ ✅ <strong>天然气适用，可签供气合同。</strong>按实验确定的参数（距离、链速）写入正式工艺文件。</p>
+<p><strong>路径二：初始达标但衰减超标</strong><br>
+→ ⚠️ <strong>疑似水蒸气干扰。</strong>检查冷冻干燥机运行状态。复测后仍衰减超标 → ❌ 暂缓项目。</p>
+<p><strong>路径三：初始不达标</strong><br>
+→ 微调参数（距离 ±5mm × 链速 1 档）复测一轮。<br>
+&nbsp;&nbsp;&nbsp;复测达标 → ⚠️ 有条件适用，按新参数写入工艺文件。<br>
+&nbsp;&nbsp;&nbsp;复测仍不达标 → ❌ <strong>暂缓项目。</strong></p>
+</div>
+
+<!-- ═══════════ §10 综合结论 ═══════════ -->
+<h2>10. 综合结论</h2>
+
+<h3>10.1 工程可行性结论</h3>
+
+<div class="success">
+<p><strong>天然气在火焰预处理环节完全可以做到与 LPG 同等质量水平，且长期一致性（过程能力 Cpk）优于 LPG。</strong>该结论成立的三项前提条件——即本报告反复强调的"三件套"——为：金属纤维表面燃烧器（弥补辐射热不足）、压缩空气冷冻式干燥机（消除水蒸气干扰）、燃气稳压缓冲罐（消除管网压力脉动）。</p>
+</div>
+
+<h3>10.2 系统视角结论</h3>
+
+<p>本报告最核心的判断超越了"哪种气源更好"的简单比较，而是落在制造体系升级的大叙事上：</p>
+
+<div class="highlight">
+<p><strong>火焰处理系统的升级，本质不是能源替换，而是制造质量控制体系从"经验驱动"向"工程控制"的系统性转型。</strong></p>
+<ul>
+  <li>液化气体系 = 分散供气 + 单机经验驱动 → 批次波动是体系固有的，无法根治</li>
+  <li>天然气体系 = 中央供气 + 标准化工程控制 → 一致性是体系内建（built-in）的，通过正确的设备配置即可实现</li>
+</ul>
+<p>天然气的三大物理短板（辐射弱、水蒸气多、管网波动）逐一对应三件套设备的工程解决方案，<strong>转型不是在原体系上打补丁，而是用新的工程架构从根上重建工艺稳定性</strong>。</p>
+</div>
+
+<h3>10.3 决策建议（三种场景）</h3>
+
+<table>
+  <tr><th>场景</th><th>判断依据</th><th>建议</th></tr>
+  <tr>
+    <td><strong>场景一</strong></td>
+    <td>报价单含"三件套" + 离线打样四项材料全部达标</td>
+    <td style="color:#38a169;font-weight:700">✅ 建议投资，可放心签约</td>
+  </tr>
+  <tr>
+    <td><strong>场景二</strong></td>
+    <td>报价单含"三件套" + 离线打样微调参数后达标</td>
+    <td style="color:#d69e2e;font-weight:700">⚠️ 有条件建议投资，按优化参数写入正式工艺文件，投产初期加密抽检</td>
+  </tr>
+  <tr>
+    <td><strong>场景三</strong></td>
+    <td>报价单缺任一项强制设备</td>
+    <td style="color:#e53e3e;font-weight:700">❌ 暂缓签约，要求设备商补全三项配置后再行评估</td>
+  </tr>
+</table>
+
+<h3>10.4 投产建议</h3>
+
+<ol>
+  <li><strong>供气合同条款：</strong>建议写入"供气压力波动幅度 &le;±10%（以每日 24 小时为周期）"作为天然气公司的质量承诺。</li>
+  <li><strong>首月加密监测：</strong>投产首月将达因值抽检频次从常规 4 小时间隔加密至每小时一次，记录 T₀/T₁₀/T₃₀ 衰减数据，积累 &ge;500 个数据点后建立四类材料专属达因值控制图。</li>
+  <li><strong>设备供应商考察：</strong>金属纤维表面燃烧器选型时，建议向供应商索取 &ge;3 个已使用天然气+金属纤维燃烧器处理塑料瓶体的实际案例，实地考察后做最终决策。</li>
+</ol>
+
+<div class="signature">
+<p>— 报告终 —</p>
+</div>
+
+</div>
+
+<!-- Like Button -->
+<div class="like-section">
+  <button class="like-btn" id="like-btn" onclick="toggleLike()">
+    <span class="heart" id="heart">♡</span>
+    <span class="like-count" id="like-count">0</span>
+  </button>
+</div>
+<script>
+(function() {
+  var KEY = 'nv_like_natural-gas-flame-treatment';
+  var liked = localStorage.getItem(KEY) === '1';
+  var count = parseInt(localStorage.getItem(KEY + '_c') || '0', 10);
+  var btn = document.getElementById('like-btn');
+  var heart = document.getElementById('heart');
+  var cnt = document.getElementById('like-count');
+  function render() {
+    if (liked) { btn.classList.add('liked'); heart.textContent = '♥'; }
+    else { btn.classList.remove('liked'); heart.textContent = '♡'; }
+    cnt.textContent = count;
+  }
+  render();
+  window.toggleLike = function() {
+    liked = !liked;
+    count = liked ? count + 1 : Math.max(0, count - 1);
+    localStorage.setItem(KEY, liked ? '1' : '0');
+    localStorage.setItem(KEY + '_c', count.toString());
+    render();
+  };
+})();
+</script>
+
+<div class="art-foot">
+  <a href="https://novora.cc/" target="_top">&larr; 返回 novora 首页</a>
+</div>
+
+</div><!-- .ctr/art-body -->
+
+<div class="share-toast" id="share-toast">&#10003; 链接已复制，去微信粘贴即可</div>
+<div class="share-overlay" id="share-overlay" onclick="if(event.target===this)closeShareOverlay()">
+  <div class="share-panel">
+    <div class="share-panel-icon">&#128279;</div>
+    <h3 class="share-panel-title" id="share-panel-title"></h3>
+    <p class="share-panel-sub">复制链接后，打开微信粘贴发送，<br>即可在朋友圈看到可点击的文章卡片</p>
+    <div class="share-panel-url" id="share-panel-url"></div>
+    <button class="share-panel-copy" onclick="copyLinkFromPanel()">&#128203; 复制文章链接</button>
+    <button class="share-panel-close" onclick="closeShareOverlay()">关闭</button>
+  </div>
+</div><script>
+function copyLink(){
+  navigator.clipboard.writeText(location.href).then(function(){
+    var t=document.getElementById('share-toast');
+    t.style.opacity='1'; setTimeout(function(){t.style.opacity='0';},2500);
+  }).catch(function(){
+    var t=document.getElementById('share-toast');
+    t.textContent='✗ 复制失败，请手动复制';
+    t.style.opacity='1'; setTimeout(function(){t.style.opacity='0';t.textContent='✓ 链接已复制，去微信粘贴即可';},2500);
+  });
+}
+function shareMoments(){
+  var title = document.title;
+  var idx = title.lastIndexOf(' — ');
+  var cleanTitle = idx > -1 ? title.substring(0, idx) : title;
+  if (navigator.share) {
+    try {
+      navigator.share({ title: cleanTitle, url: location.href });
+      return;
+    } catch(e) { showSharePanel(cleanTitle); return; }
+  }
+  showSharePanel(cleanTitle);
+}
+function shareWechat(){
+  var title = document.title;
+  var idx = title.lastIndexOf(' — ');
+  var cleanTitle = idx > -1 ? title.substring(0, idx) : title;
+  if (navigator.share) {
+    try {
+      navigator.share({ title: cleanTitle, url: location.href });
+      return;
+    } catch(e) { showSharePanel(cleanTitle); return; }
+  }
+  showSharePanel(cleanTitle);
+}
+function showSharePanel(cleanTitle){
+  document.getElementById('share-panel-title').textContent = cleanTitle;
+  document.getElementById('share-panel-url').textContent = location.href;
+  document.getElementById('share-overlay').classList.add('show');
+}
+function copyLinkFromPanel(){
+  navigator.clipboard.writeText(location.href).then(function(){
+    var t=document.getElementById('share-toast');
+    t.style.opacity='1'; setTimeout(function(){t.style.opacity='0';},2500);
+  }).catch(function(){
+    var t=document.getElementById('share-toast');
+    t.textContent='✗ 复制失败，请手动复制';
+    t.style.opacity='1'; setTimeout(function(){t.style.opacity='0';t.textContent='✓ 链接已复制，去微信粘贴即可';},2500);
+  });
+}
+function closeShareOverlay(){
+  document.getElementById('share-overlay').classList.remove('show');
+}
+
+  // -- novora logo micro-collision (5s) --
+  (function logoChain() {
+    var delay = 5000;
+    setTimeout(function() {
+      var letters = document.querySelectorAll('.site-hd .logo-l');
+      if (!letters.length) { logoChain(); return; }
+      letters.forEach(function(l, i) {
+        setTimeout(function() {
+          var cls = i === letters.length - 1 ? 'lrebound' : 'lnudge';
+          l.classList.add(cls);
+          setTimeout(function() { l.classList.remove(cls); }, i === letters.length - 1 ? 350 : 200);
+        }, i * 130);
+      });
+      logoChain();
+    }, delay);
+  })();
+</script>
+</body>
+</html>
