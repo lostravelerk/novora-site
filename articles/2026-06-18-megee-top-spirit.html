@@ -38,7 +38,7 @@
 })();
 </script>
 
-<meta name="version" content="20260620v76">
+<meta name="version" content="20260620v79">
 <meta property="og:title" content="致美集全员的一封信｜把TOP精神写进每一天">
 <meta property="og:description" content="写给每一位正在新工厂、项目现场、客户一线和管理岗位上共同前行的美集人：让诚信成为底线，让超越成为习惯，让完美成为持续迭代的方向。">
 <meta property="og:url" content="https://novora.cc/articles/2026-06-18-megee-top-spirit.html">
@@ -936,13 +936,19 @@
     will-change:transform;
     animation:signature-marquee 24s linear infinite;
   }
-  .signature-marquee span {
+  .signature-marquee-group {
     flex:0 0 auto;
-    padding-right:.22em;
+    display:flex;
+    gap:.48em;
+    padding-right:.7em;
     font:800 10vw/.8 var(--sans);
     letter-spacing:-.08em;
     white-space:nowrap;
     text-transform:uppercase;
+  }
+  .signature-word {
+    display:inline-block;
+    color:inherit;
   }
   @keyframes signature-marquee {
     from { transform:translate3d(0,0,0); }
@@ -1347,7 +1353,9 @@
     .signature-marquee {
       bottom:24px;
     }
-    .signature-marquee span {
+    .signature-marquee-group {
+      gap:.5em;
+      padding-right:.72em;
       font-size:clamp(72px,24vw,120px);
     }
     .premium-letter .article-hero {
@@ -1568,8 +1576,8 @@
   <section class="signature-band">
     <div class="signature-marquee" aria-hidden="true">
       <div class="signature-marquee-track">
-        <span>Trusting Outperforming Perfecting</span>
-        <span>Trusting Outperforming Perfecting</span>
+        <span class="signature-marquee-group"><span class="signature-word">Trusting</span><span class="signature-word">Outperforming</span><span class="signature-word">Perfecting</span></span>
+        <span class="signature-marquee-group"><span class="signature-word">Trusting</span><span class="signature-word">Outperforming</span><span class="signature-word">Perfecting</span></span>
       </div>
     </div>
     <div class="signature-shell">
