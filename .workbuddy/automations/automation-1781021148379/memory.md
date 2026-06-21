@@ -1,5 +1,15 @@
 # novora 每日文章 Automation 执行记录
 
+## 2026-06-20 (周六 · 洞察)
+- **栏目**: 洞察 — 全球包材行业并购潮与权力转移
+- **文章**: `articles/2026-06-20-packaging-ma-power-shift.html`
+- **标题**: 你的包材供应商越做越强，但你的采购成本为什么没降？——全球包材行业并购潮背后的权力转移
+- **自评**: 90/100 (专业性27 + 深度18 + 逻辑性18 + 原创性13 + 实用价值14)
+- **版本**: 20260619v75 → 20260620v81 (远程已预升v81，合并冲突已解决)
+- **Git**: commit 9f3b6c2, push 成功 (先 git stash + pull --rebase，index.html/version冲突已解)
+- **Cloudflare**: 部署成功 → novora.cc
+- **邮件**: SMTP 认证失败 (535 system busy)，同6/19，需人工更新 Keychain 密码
+
 ## 2026-06-19 (周五 · AI)
 - **栏目**: AI — RAG 落地工业场景的五个盲区
 - **文章**: `articles/2026-06-19-rag-industrial-pitfalls.html`
