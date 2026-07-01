@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<script>
+(function(){
+  var meta = document.querySelector('meta[name="version"]');
+  if (!meta) return;
+  var localV = meta.content;
+  var retries = parseInt(sessionStorage.getItem('nv_ver_retry')||'0');
+  if (retries > 3) { sessionStorage.removeItem('nv_ver_retry'); return; }
+  fetch('/novora-site/version.json?t=' + Date.now(), {cache:'no-store'})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d.version && d.version !== localV) {
+        sessionStorage.setItem('nv_ver_retry', String(retries + 1));
+        var u = location.href.split('?')[0] + '?v=' + d.version + '&t=' + Date.now();
+        location.replace(u);
+      } else {
+        sessionStorage.removeItem('nv_ver_retry');
+      }
+    })
+    .catch(function(){});
+})();
+</script>
+
+<meta name="version" content="20260610v40">
+<meta property="og:title" content="你的MES花了200万，为什么排产还靠老师傅的笔记本？——制造执行系统「上线」和「用起来」是两回事">
+<meta property="og:description" content="MES系统普及率超过60%，但真正用起来的不到20%。问题不在技术，在数据、流程、人和系统集成的四个工程断层。">
+<meta property="og:url" content="https://novora.cc/articles/2026-07-01-mes-reality.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="novora">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://novora.cc/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="article:published_time" content="2026-07-01">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="你的MES花了200万，为什么排产还靠老师傅的笔记本？——制造执行系统「上线」和「用起来」是两回事">
+<meta name="twitter:description" content="MES系统普及率超过60%，但真正用起来的不到20%。问题不在技术，在数据、流程、人和系统集成的四个工程断层。">
+<meta name="twitter:image" content="https://novora.cc/og-image.png">
+<meta name="description" content="MES系统普及率超过60%，但真正用起来的不到20%。问题不在技术，在数据、流程、人和系统集成的四个工程断层。">
+<meta itemprop="name" content="你的MES花了200万，为什么排产还靠老师傅的笔记本？——制造执行系统「上线」和「用起来」是两回事">
+<meta itemprop="description" content="MES系统普及率超过60%，但真正用起来的不到20%。问题不在技术，在数据、流程、人和系统集成的四个工程断层。">
+<meta itemprop="image" content="https://novora.cc/og-image.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "你的MES花了200万，为什么排产还靠老师傅的笔记本？——制造执行系统「上线」和「用起来」是两回事", "description": "MES系统普及率超过60%，但真正用起来的不到20%。问题不在技术，在数据、流程、人和系统集成的四个工程断层。", "image": "https://novora.cc/og-image.png", "datePublished": "2026-07-01", "publisher": {"@type": "Organization", "name": "novora", "url": "https://novora.cc"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://novora.cc/articles/2026-07-01-mes-reality.html"}}
+</script>
+
+<title>你的MES花了200万，为什么排产还靠老师傅的笔记本？——制造执行系统「上线」和「用起来」是两回事 — novora</title>
+<style>
+  :root { --bdf: #0F2747; --bdf-l: #1A3F6E; --bdf-pale: #EEF3F9; --text: #1F2937; --muted: #6B7280; --bg: #F7F7F7; --card: #FFFFFF; --gray-1: #E5E7EB; --gray-3: #9CA3B8; }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  body { padding:8px 20px; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; font-size:15px; line-height:1.75; color:var(--text); background:var(--bg); -webkit-font-smoothing:antialiased;  }
+
+  /* -- Site Header -- */
+  .site-hd { max-width:720px; margin:0 auto 2px; padding:0 4px; display:flex; align-items:baseline; gap:8px; }
+  .site-hd .site-logo { font-size:18px; font-weight:700; color:var(--bdf); letter-spacing:-0.3px; white-space:nowrap; text-decoration:none; }
+  .site-hd .site-sub { font-size:10px; color:var(--muted); letter-spacing:0.2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1; min-width:0; }
+  .logo-l { display: inline-block; }
+  @keyframes logo-nudge { 0% { transform: translateX(0); } 40% { transform: translateX(1px); } 100% { transform: translateX(0); } }
+  @keyframes logo-rebound { 0% { transform: translateX(0); } 35% { transform: translateX(1px); } 65% { transform: translateX(-0.5px); } 100% { transform: translateX(0); } }
+  .lnudge { animation: logo-nudge 0.2s ease-in-out; }
+  .lrebound { animation: logo-rebound 0.35s ease-in-out; }
+
+  /* -- Hero -- */
+  .article-hero { padding:8px 20px 6px; text-align:center; }
+  .article-hero h1 { font-size:18px; font-weight:700; color:var(--bdf); line-height:1.3; margin:0 0 4px; letter-spacing:-0.3px; }
+  .article-hero .meta { font-size:11px; color:var(--muted); }
+  .article-hero .share-bar-top { display:flex; gap:3px; justify-content:center; flex-wrap:wrap; margin-top:4px; }
+  .share-btn-top { display:inline-flex; align-items:center; gap:3px; font-size:11px; font-weight:500; color:var(--muted); background:#fff; border:1px solid var(--gray-1); border-radius:5px; padding:3px 10px; cursor:pointer; transition:all .15s; }
+  .share-btn-top:hover { border-color:#BFCAD8; color:var(--bdf); }
+
+  .ctr { max-width:720px; margin:0 auto; }
+  .art-body { background:var(--card); border-radius:16px; padding:20px 24px; border:1px solid rgba(0,0,0,0.04); }
+  .art-body h2 { font-size:16px; font-weight:700; color:var(--bdf); margin:20px 0 8px; padding-bottom:8px; border-bottom:1px solid var(--gray-1); }
+  .art-body h3 { font-size:15px; font-weight:600; color:var(--bdf-l); margin:14px 0 4px; }
+  .art-body p { margin-bottom:12px; }
+  .art-body ul, .art-body ol { padding-left:22px; margin-bottom:16px; }
+  .art-body li { margin-bottom:6px; }
+  .callout { border-left:3px solid var(--bdf-l); background:var(--bdf-pale); padding:14px 18px; border-radius:0 8px 8px 0; margin:18px 0; font-size:15px; }
+  .art-foot { text-align:center; padding:24px 0 36px; color:var(--muted); font-size:14px; }
+  .art-foot a { color:var(--bdf); text-decoration:none; }
+
+  @media (max-width:600px) {
+    .article-hero { padding:6px 12px 4px; }
+    .article-hero h1 { font-size:18px; }
+    .art-body { padding:18px 14px; font-size:14px; }
+    .art-body h2 { font-size:16px; }
+  }
+  .like-count { font-variant-numeric:tabular-nums; }
+  /* Share toast & overlay */
+  .share-toast { position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:#0F2747; color:#fff; padding:10px 24px; border-radius:8px; font-size:14px; z-index:10001; opacity:0; transition:opacity .3s; pointer-events:none; white-space:nowrap; }
+  .share-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.55); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; z-index:10000; opacity:0; pointer-events:none; transition:opacity .25s; }
+  .share-overlay.show { opacity:1; pointer-events:auto; }
+  .share-panel { background:#fff; border-radius:16px; padding:32px 28px 24px; max-width:400px; width:88vw; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,0.25); }
+  .share-panel-icon { font-size:40px; margin-bottom:8px; }
+  .share-panel-title { font-size:17px; font-weight:700; color:#0F2747; margin:0 0 6px; }
+  .share-panel-sub { font-size:13px; color:#5f6b7a; margin:0 0 20px; line-height:1.6; }
+  .share-panel-url { display:flex; gap:8px; align-items:center; background:#f4f6f9; border-radius:10px; padding:10px 14px; font-size:12px; color:#3b4556; word-break:break-all; margin-bottom:16px; }
+  .share-panel-copy { display:inline-flex; align-items:center; gap:6px; background:#0F2747; color:#fff; border:none; border-radius:8px; padding:10px 22px; font-size:14px; font-weight:600; cursor:pointer; }
+  .share-panel-copy:hover { background:#1a3560; }
+  .share-panel-close { display:block; margin:16px auto 0; background:none; border:none; color:#8c97a8; font-size:13px; cursor:pointer; }
+</style>
+
+</head>
+<body>
+
+<!-- Site Header -->
+<div class="site-hd">
+  <a class="site-logo" href="https://novora.cc"><span class="logo-l">n</span><span class="logo-l">o</span><span class="logo-l">v</span><span class="logo-l">o</span><span class="logo-l">r</span><span class="logo-l">a</span></a>
+  <span class="site-sub">包装｜材料｜制造｜质量｜AI｜可持续发展｜洞察｜阅读</span>
+</div>
+
+<!-- Hero -->
+<div class="article-hero">
+  <h1>你的MES花了200万，为什么排产还靠老师傅的笔记本？——制造执行系统「上线」和「用起来」是两回事</h1>
+  <p class="meta">2026年7月1日 · 制造 · MES</p>
+  <div class="share-bar-top" style="display:flex; gap:4px; justify-content:center; flex-wrap:wrap; margin-top:4px;">
+    <button class="share-btn-top" onclick="copyLink()" style="display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:500;color:#6B7280;background:#fff;border:1px solid #E5E7EB;border-radius:5px;padding:3px 10px;cursor:pointer;transition:all .2s;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      复制链接
+    </button>
+    <button class="share-btn-top" onclick="shareMoments()" style="display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:500;color:#6B7280;background:#fff;border:1px solid #E5E7EB;border-radius:5px;padding:3px 10px;cursor:pointer;transition:all .2s;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E53935" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
+      分享至朋友圈
+    </button>
+    <button class="share-btn-top" onclick="shareWechat()" style="display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:500;color:#6B7280;background:#fff;border:1px solid #E5E7EB;border-radius:5px;padding:3px 10px;cursor:pointer;transition:all .2s;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="#07C160"><path d="M8.5 11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-7.5 4c-3.3 0-6-2.2-6-5 0-2.3 1.8-4.2 4.5-4.8C5.2 2.8 8.4 1 12 1c4.7 0 8.5 3.1 8.5 7 0 1.7-.7 3.2-1.8 4.4.2.4.3.9.3 1.4 0 2.2-1.8 4-4 4-.6 0-1.2-.1-1.7-.4A6.5 6.5 0 0 1 6 15z"/></svg>
+      微信好友
+    </button>
+  </div>
+  </div>
+
+<div class="ctr art-body">
+
+<h2>一、「上线」不等于「用起来」</h2>
+
+<p>过去五年，中国制造业的MES渗透率从不到30%飙升到超过60%。各种政策补贴、智能制造评审、客户验厂要求，推动着大大小小的工厂把MES系统装了进去。如果你走进一家年营收过亿的制造企业，大概率能在某个机房的服务器上找到一套正在运行的MES。</p>
+
+<p>但「正在运行」和「正在发挥作用」是两回事。</p>
+
+<p>一个业内心照不宣的事实是：<strong>在已经部署MES的工厂里，真正把排产、报工、质量追溯、设备OEE这些核心模块用起来的，可能不到20%。</strong>其余的80%里，有的只用了工单打印功能——把MES当成一台昂贵的打印机；有的数据全靠「补录」——月底财务要报表了，车间主任组织人手花三天把上个月的数据填进去；有的干脆开了两个系统——MES应付客户验厂，Excel管真实生产。</p>
+
+<p>MES行业有个黑色幽默：<strong>最赚钱的不是软件公司，而是那些专门帮工厂「做数据」应付验厂的第三方服务商。</strong></p>
+
+<h2>二、数据断层：MES的命门不在代码，在输入端</h2>
+
+<p>MES的核心价值主张是「实时、透明、可追溯」。但所有这三个词都有一个前提：<strong>数据是准的。</strong></p>
+
+<p>数据不准的第一个来源是设备层。工厂里的注塑机、冲床、CNC，品牌跨越海天、伊之密、发那科、德马吉，年代从2010到2023，通讯协议从OPC UA到Modbus RTU到什么都不支持的继电器信号。MES要想从这些设备自动采数，需要面对的不是一个统一接口，而是一个「设备通讯博物馆」。很多工厂在项目预算里没有给设备改造留钱，结果MES上线后发现一半的关键设备根本采不到数据。</p>
+
+<p>设备采不到，那就靠人录。而人录数据是所有MES项目的噩梦起点。</p>
+
+<p>一个注塑操作工的基本工资是计件的，他每小时有产量指标。你现在要求他在每模产品出来之后点一下屏幕报工，这个动作对他来说没有任何直接收益，反而占用了他完成产量的时间。结果可以预见：<strong>他会在下班前集中把当天的数量估一个数填进去，或者在换模的时候一次录完。</strong>数据是有了，但它跟「实时」毫无关系。</p>
+
+<p>更隐蔽的问题在质量数据。检验员在MES里填「外观合格」只需要点一下，但真正做外观检验需要翻遍整个托盘的每一只产品。当检验时间被压缩，他选择相信经验——「这套模我熟悉，不会出问题」——然后MES里记录的全是合格，而客户那边的退货率却在上升。</p>
+
+<div class="callout">
+<strong>MES数据质量的第一定律：</strong><br>
+数据的真实性 = 录入成本 / 录入者的获益感知。当录入成本远高于获益感知时，数据的真实性趋近于零。
+</div>
+
+<h2>三、流程断层：MES要求标准，而工厂活在例外里</h2>
+
+<p>MES的底层逻辑是把生产过程建模为一系列标准化的状态流转：工单下发→领料→调机→首检→量产→完工→入库。每个状态有明确的触发条件、责任人、时间窗口。</p>
+
+<p>但真实工厂的运行逻辑是「状态流转 + 例外处理」。每天至少有30%的生产事件不符合标准流程：客户临时插单、模具突发故障、材料批次异常需要换料、QC发现不良需要停线评审、设备限速导致实际节拍偏离标准工时。</p>
+
+<p>当例外发生，标准流程就断了。而大多数MES系统对例外场景的处理极度薄弱——要么不允许跳过工序报工，逼着操作工「先斩后奏」导致系统数据与实际操作脱节；要么允许跳过但标记为异常，导致月底报表显示全月都是异常事件，管理者干脆不看系统了。</p>
+
+<p><strong>MES的流程模型追求的是「确定性世界」，而工厂运行在「概率世界」里。</strong>这是在系统设计层面最根本的矛盾。</p>
+
+<h2>四、集成断层：数据孤岛不是技术问题，是权力问题</h2>
+
+<p>一个完整的制造IT架构至少包含三层：ERP（企业资源计划）在上、MES（制造执行）在中、SCADA/PLC（设备控制）在下。理论上，订单从ERP下到MES，MES分解为工单下到设备，设备执行后数据回传MES，MES汇总后上报ERP。这是ISA-95标准画的蓝图。</p>
+
+<p>现实是：ERP是财务部主导选的，MES是生产部主导上的，设备是工程部买的，三套系统分属三个不同部门，各有各的KPI。财务部只关心ERP里的成本核算准不准，生产部只关心MES里的产量有没有达标，工程部只关心设备OEE能不能交差。三个部门没有动力——也没有预算——去打通数据。</p>
+
+<p>更深层的问题是，<strong>数据打通意味着信息透明，而信息透明会威胁到某些人的权力。</strong>当老板能从MES里实时看到每个车间的真实工时和真实不良率，车间主任就失去了信息差带来的缓冲空间。这种隐性的制度阻力，比技术难题更难解决。</p>
+
+<h2>五、人因断层：MES是给管理层看的，不是给操作工用的</h2>
+
+<p>这是最根本的问题。绝大部分MES系统的界面设计和交互逻辑，是按照管理者的信息需求来构建的：你要能看到排产甘特图、能导出OEE报表、能追溯每批产品的工艺参数。这些需求都没错，但它们忘记了一个事实：<strong>系统80%的数据输入来自一线操作工，而操作工从MES中获得的价值接近于零。</strong></p>
+
+<p>一个典型的MES终端界面是这样的：10个输入框、5个下拉菜单、3个扫描枪动作，完成一次报工操作需要40秒。而操作工用纸质工单只需要在旁边的本子上写三个数字——工单号、产量、不良数——5秒。如果他每天要报工50次，MES比纸质工单每天多消耗他将近30分钟。</p>
+
+<p>这就是为什么无数工厂出现「第二套账」：操作工在纸上记录真实数据以备自己查证，在MES里填一套「整理过的」数据应付系统。两套数据平行运行，谁也不信谁。</p>
+
+<h2>六、MES「用起来」的四个工程条件</h2>
+
+<p>基于以上分析，MES从「上线」走到「用起来」，需要同时满足四个工程条件：</p>
+
+<ol>
+  <li><strong>自动化采数优先于人工录入。</strong>任何需要人主动录入的关键数据节点，都应该先问一个问题：这个数据能不能从设备自动采？如果不能，设备改造的成本和人工录入的失真风险哪个更大？很多工厂省了设备改造的50万，结果花了200万买回来的MES变成了摆设。</li>
+  <li><strong>流程建模要容纳例外。</strong>不要把MES建成一个「只接受标准路径」的系统。至少要为常见的例外场景（插单、异常停机、让步接收、紧急放行）设计规范化的处理通道。例外流程也是流程，只不过触发条件不同。</li>
+  <li><strong>操作工界面要以秒为单位优化。</strong>每次交互操作的耗时直接决定数据质量。如果一个报工动作需要超过15秒，操作工就会抗拒。大按钮、扫码触发、语音录入、批量确认——这些不是UI美化，是数据质量工程。</li>
+  <li><strong>组织层面的数据治理先于系统建设。</strong>跨部门的数据打通不是IT部能推动的。需要一把手亲自定规矩：数据归公司不归部门，KPI考核要加入数据及时率和准确率指标，系统取数以MES为准而不是以Excel为准——这些是制度问题，不是技术问题。</li>
+</ol>
+
+<h2>七、结语</h2>
+
+<p>MES不是买来就能用的工具，而是一个需要从数据、流程、人、制度四个维度同时施工的系统工程。它最大的成本不是软件授权费，不是实施顾问的人天费，而是<strong>让全组织真正接受「数据驱动的生产方式」这个理念本身所付出的认知转换成本</strong>。</p>
+
+<p>那些把MES真正用起来的工厂，往往不是因为买到了更好的软件，而是因为老板本人坐在了项目周会上，每周盯着上线进度和数据质量。这个细节看起来跟技术无关，但它恰恰是MES成败的最大变量。</p>
+
+<p><strong>信息化提升效率是结果，不是原因。原因是组织愿意为效率改变自己。</strong></p>
+
+</div>
+
+<!-- Like Button -->
+<div class="like-section">
+  <button class="like-btn" id="like-btn" onclick="toggleLike()">
+    <span class="heart" id="heart">♡</span>
+    <span class="like-count" id="like-count">0</span>
+  </button>
+</div>
+<script>
+(function() {
+  var KEY = 'nv_like_mes-reality';
+  var liked = localStorage.getItem(KEY) === '1';
+  var count = parseInt(localStorage.getItem(KEY + '_c') || '0', 10);
+  var btn = document.getElementById('like-btn');
+  var heart = document.getElementById('heart');
+  var cnt = document.getElementById('like-count');
+  function render() {
+    if (liked) { btn.classList.add('liked'); heart.textContent = '♥'; }
+    else { btn.classList.remove('liked'); heart.textContent = '♡'; }
+    cnt.textContent = count;
+  }
+  render();
+  window.toggleLike = function() {
+    liked = !liked;
+    count = liked ? count + 1 : Math.max(0, count - 1);
+    localStorage.setItem(KEY, liked ? '1' : '0');
+    localStorage.setItem(KEY + '_c', count.toString());
+    render();
+  };
+})();
+</script>
+
+<div class="art-foot">
+  <a href="https://novora.cc">&larr; 返回 novora 首页</a>
+</div>
+
+</div><!-- .ctr/art-body -->
+
+<div class="share-toast" id="share-toast">&#10003; 链接已复制，去微信粘贴即可</div>
+<div class="share-overlay" id="share-overlay" onclick="if(event.target===this)closeShareOverlay()">
+  <div class="share-panel">
+    <div class="share-panel-icon">&#128279;</div>
+    <h3 class="share-panel-title" id="share-panel-title"></h3>
+    <p class="share-panel-sub">复制链接后，打开微信粘贴发送，<br>即可在朋友圈看到可点击的文章卡片</p>
+    <div class="share-panel-url" id="share-panel-url"></div>
+    <button class="share-panel-copy" onclick="copyLinkFromPanel()">&#128203; 复制文章链接</button>
+    <button class="share-panel-close" onclick="closeShareOverlay()">关闭</button>
+  </div>
+</div>
+<script>
+function copyLink(){
+  navigator.clipboard.writeText(location.href).then(function(){
+    var t=document.getElementById('share-toast');
+    t.style.opacity='1'; setTimeout(function(){t.style.opacity='0';},2500);
+  }).catch(function(){
+    var t=document.getElementById('share-toast');
+    t.textContent='✗ 复制失败，请手动复制';
+    t.style.opacity='1'; setTimeout(function(){t.style.opacity='0';t.textContent='✓ 链接已复制，去微信粘贴即可';},2500);
+  });
+}
+function shareMoments(){
+  var title = document.title;
+  var idx = title.lastIndexOf(' — ');
+  var cleanTitle = idx > -1 ? title.substring(0, idx) : title;
+  if (navigator.share) {
+    try {
+      navigator.share({ title: cleanTitle, url: location.href });
+      return;
+    } catch(e) { showSharePanel(cleanTitle); return; }
+  }
+  showSharePanel(cleanTitle);
+}
+function shareWechat(){
+  var title = document.title;
+  var idx = title.lastIndexOf(' — ');
+  var cleanTitle = idx > -1 ? title.substring(0, idx) : title;
+  if (navigator.share) {
+    try {
+      navigator.share({ title: cleanTitle, url: location.href });
+      return;
+    } catch(e) { showSharePanel(cleanTitle); return; }
+  }
+  showSharePanel(cleanTitle);
+}
+function showSharePanel(cleanTitle){
+  document.getElementById('share-panel-title').textContent = cleanTitle;
+  document.getElementById('share-panel-url').textContent = location.href;
+  document.getElementById('share-overlay').classList.add('show');
+}
+function copyLinkFromPanel(){
+  navigator.clipboard.writeText(location.href).then(function(){
+    var t=document.getElementById('share-toast');
+    t.style.opacity='1'; setTimeout(function(){t.style.opacity='0';},2500);
+  }).catch(function(){
+    var t=document.getElementById('share-toast');
+    t.textContent='✗ 复制失败，请手动复制';
+    t.style.opacity='1'; setTimeout(function(){t.style.opacity='0';t.textContent='✓ 链接已复制，去微信粘贴即可';},2500);
+  });
+}
+function closeShareOverlay(){
+  document.getElementById('share-overlay').classList.remove('show');
+}
+
+  // -- novora logo micro-collision (5s) --
+  (function logoChain() {
+    var delay = 5000;
+    setTimeout(function() {
+      var letters = document.querySelectorAll('.site-hd .logo-l');
+      if (!letters.length) { logoChain(); return; }
+      letters.forEach(function(l, i) {
+        setTimeout(function() {
+          var cls = i === letters.length - 1 ? 'lrebound' : 'lnudge';
+          l.classList.add(cls);
+          setTimeout(function() { l.classList.remove(cls); }, i === letters.length - 1 ? 350 : 200);
+        }, i * 130);
+      });
+      logoChain();
+    }, delay);
+  })();
+</script>
+</body>
+</html>
